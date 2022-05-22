@@ -1,3 +1,11 @@
+
+
+## EDAhelper
+
+- It is installed with the command `pip install edahelper`.
+- GitHub repo for the Python package is [here](https://github.com/UBC-MDS/EDAhelper)
+- 
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/stevenleung2018/digital-cv/edit/gh-pages/README.md) to maintain and preview the content for your website in Markdown files.
