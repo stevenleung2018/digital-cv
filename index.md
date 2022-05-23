@@ -4,7 +4,7 @@
 - Here is a list of my technical projects:
 
 ## [Doggodash](http://dsci532-2022-group18-py.herokuapp.com)
-
+![Doggodash sample screenshot](https://github.com/UBC-MDS/doggodash/blob/main/doc/images/sketch2.png)
 - [GitHub repo](https://github.com/UBC-MDS/doggodash)
 
 ## EDAhelper
