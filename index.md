@@ -5,7 +5,10 @@
 
 ## EDAhelper
 
-- It is installed with the command `pip install edahelper`.
+- Python and R packages to make Exploratory Data Analysis (EDA) easier by simplifying 4 common EDA tasks into one-line codes.
 - The GitHub repo for the Python package is [here](https://github.com/UBC-MDS/EDAhelper)
-- The R version (called `EDAhelperR`) can be installed with the command `devtools::install_github('UBC-MDS/EDAhelperR')` from the R console.
 - The GitHub repo for the R package is [here](https://github.com/UBC-MDS/EDAhelperR)
+
+## Doggodash
+
+-
