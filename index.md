@@ -6,6 +6,7 @@
 ## EDAhelper
 
 - Python and R packages to make Exploratory Data Analysis (EDA) easier by simplifying 4 common EDA tasks into one-line codes.
+- Documentation of the Python package can be seen [here](https://pypi.org/project/edahelper/).
 - The GitHub repo for the Python package is [here](https://github.com/UBC-MDS/EDAhelper)
 - The GitHub repo for the R package is [here](https://github.com/UBC-MDS/EDAhelperR)
 
