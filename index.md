@@ -1,8 +1,13 @@
-# Steven Leung
+# Profile
 
+# Education
 -   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia
+-   B.Sc. of Computer Science and Engineering, University of California, Los Angeles
+
+# Professional Profile
 -   [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
--   Here is a list of my technical projects:
+
+# Technical Projects
 
 ## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
 
