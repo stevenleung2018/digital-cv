@@ -2,3 +2,4 @@ theme: jekyll-theme-modernist
 github:
   is_project_page: false
 title: [Steven Leung]
+show_downloads: false
