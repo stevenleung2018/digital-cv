@@ -6,7 +6,7 @@ Welcome to my GitHub pages!
 
 # Professional
 -   4 years+ of sales/consultancy of data science professional services
--   Other experience can be found on my [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
+-   Other experience can be found in my [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
 
 # Technical Projects
 
