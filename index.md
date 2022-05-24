@@ -5,6 +5,8 @@
 
 ## [Doggodash](http://dsci532-2022-group18-py.herokuapp.com)
 
+- DoggoDash is an interactive web app which provides visualizations for users to explore the breeds of dog that best match their preferences.
+
 ![Doggodash sample screenshot](img/sketch2.png) - [GitHub repo](https://github.com/UBC-MDS/doggodash)
 
 ## EDAhelper
@@ -15,3 +17,5 @@
 -   The GitHub repo for the Python package is [here](https://github.com/UBC-MDS/EDAhelper).
 -   Documentation of the R package can be see [here](https://ubc-mds.github.io/EDAhelperR/index.html).
 -   The GitHub repo for the R package is [here](https://github.com/UBC-MDS/EDAhelperR).
+
+
