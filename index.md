@@ -1,5 +1,6 @@
 # Steven Leung
 
+-   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia
 -   [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
 -   Here is a list of my technical projects:
 
