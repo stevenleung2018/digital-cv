@@ -27,7 +27,7 @@ Welcome to my GitHub pages!
 
 ## Is age associated with success at the Olympics?
 
-- This is a hypothesis test of whether athletes under age 25 have a significantly higher chance of winning an Olympic medal than those age 25 or old.  It is done in the form of a reproducible data science project.
+- This is a hypothesis test of whether athletes under age 25 have a significantly higher chance of winning an Olympic medal than those age 25 or above.  It is done in the form of a reproducible data science project.
 - [Non-technical report](https://stevenleung2018.github.io/docs/DSCI_542_Lab2_Report.pdf)
 - [Technical report](https://stevenleung2018.github.io/docs/05_final_report.pdf)
 - [GitHub repo](https://github.com/UBC-MDS/olympic_medal_htest)
