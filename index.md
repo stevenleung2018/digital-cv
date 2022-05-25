@@ -1,5 +1,3 @@
-- Data Scientist 
-
 Welcome to my GitHub pages!
 
 # Education
