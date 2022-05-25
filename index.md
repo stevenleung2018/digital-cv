@@ -2,7 +2,7 @@ Welcome to my GitHub pages!
 
 # Education
 -   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia
--   B.Sc. of Computer Science and Engineering, University of California, Los Angeles
+-   B.Sc. of Computer Science and Engineering, [UCLA](https://www.cs.ucla.edu)
 
 # Professional
 -   4 years+ of sales/consultancy of data science professional services
