@@ -20,7 +20,7 @@ Welcome to my GitHub pages!
 
 -   Python and R packages to make Exploratory Data Analysis (EDA) easier by simplifying 4 common EDA tasks into one-line codes.
 -   Presentation deck in PDF format is [here](https://stevenleung2018.github.io/docs/542_group5_EDAhelper.pdf)
--   Documentation of the Python package can be seen [here](https://pypi.org/project/edahelper/).
+-   Documentation of the Python package can be seen [here](https://pypi.org/project/edahelper/) and [here](https://edahelper.readthedocs.io/en/latest/).
 -   The GitHub repo for the Python package is [here](https://github.com/UBC-MDS/EDAhelper).
 -   Documentation of the R package can be see [here](https://ubc-mds.github.io/EDAhelperR/index.html).
 -   The GitHub repo for the R package is [here](https://github.com/UBC-MDS/EDAhelperR).
