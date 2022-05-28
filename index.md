@@ -10,6 +10,10 @@ Welcome to my GitHub pages!
 
 # Technical Projects
 
+## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Mining Industry (May-June 2022)
+
+(I cannot share further details due to NDA with the capstone partner.  Sorry.)
+
 ## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
 
 - DoggoDash is an interactive web app which provides visualizations for users to explore the breeds of dog that best match their preferences.
