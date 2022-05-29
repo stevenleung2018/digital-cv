@@ -10,9 +10,9 @@ Welcome to my GitHub pages!
 
 # Technical Projects
 
-## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Mining Industry (May-June 2022)
+## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Goldspot Discoveries Corp. (May-June 2022)
 
-(I cannot share further details due to NDA with the capstone partner.  Sorry.)
+- This project is about the design and implementation of a framework which is generalized to all datasets and models for monitoring and detecting data drift and model decay, i.e. when the model needs retraining. 
 
 ## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
 
