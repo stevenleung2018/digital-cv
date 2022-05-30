@@ -6,6 +6,10 @@ Welcome to my GitHub pages!
 
 # Professional
 -   4 years+ of sales/consultancy of data science professional services
+## Public Presentations
+- [ClusterTech Demonstrates How NLP Can Facilitate in Financial Industry](https://www.youtube.com/watch?v=o7gcxLfbv0Y)
+- [Using AI to Thrive in Challenging Times (ClusterTech X Pure Storage X NVIDIA Webinar)](https://www.youtube.com/watch?v=HnlXPvLIXR0)
+## Other experience
 -   Other experience can be found in my [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
 
 # Technical Projects
