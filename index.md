@@ -9,9 +9,9 @@ Welcome to my GitHub pages!
 ## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Goldspot Discoveries Corp. (May-June 2022)
 
 - This project is about the design and implementation of a framework, which is generalized to all datasets and models, for monitoring and detecting data drift and model decay, i.e. when the model needs retraining. 
-- Developers: Christopher Alexander, Lianna Hovhannisyan, Joshua Sia and **Steven Leung**
-- UBC Supervisor: Dr. Simon Gorin
-- Advisor from Partner: Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
+- **Developers**: Christopher Alexander, Lianna Hovhannisyan, Joshua Sia and **Steven Leung**
+- **UBC Supervisor**: Dr. Simon Gorin
+- **Advisor from Partner**: Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 
 ## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
 
