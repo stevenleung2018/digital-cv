@@ -1,7 +1,7 @@
 Welcome to my GitHub pages!
 
 # Education
--   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia (Expected June 2022)
+-   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia (June 2022)
 -   B.Sc. of Computer Science and Engineering, [UCLA](https://www.cs.ucla.edu)
 
 # Technical Projects
