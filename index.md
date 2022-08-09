@@ -1,9 +1,5 @@
 Welcome to my GitHub pages!
 
-# Education
--   [Master of Data Science](https://masterdatascience.ubc.ca/programs/vancouver), University of British Columbia (June 2022)
--   B.Sc. of Computer Science and Engineering, [UCLA](https://www.cs.ucla.edu)
-
 # Technical Projects
 
 ## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Goldspot Discoveries Corp. (May-June 2022)
@@ -34,11 +30,3 @@ Welcome to my GitHub pages!
 - [Non-technical report](https://stevenleung2018.github.io/docs/DSCI_542_Lab2_Report.pdf)
 - [Technical report](https://stevenleung2018.github.io/docs/05_final_report.pdf)
 - [GitHub repo](https://github.com/UBC-MDS/olympic_medal_htest)
-
-# Professional
--   4 years+ of sales/consultancy of data science professional services
-## Public Presentations
-- [ClusterTech Demonstrates How NLP Can Facilitate in Financial Industry](https://www.youtube.com/watch?v=o7gcxLfbv0Y)
-- [Using AI to Thrive in Challenging Times (ClusterTech X Pure Storage X NVIDIA Webinar)](https://www.youtube.com/watch?v=HnlXPvLIXR0)
-## Other experience
--   Other experience can be found in my [LinkedIn Profile](https://www.linkedin.com/in/stevenleung08/)
