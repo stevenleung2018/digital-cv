@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 # My PGWP flagpoling experience
 
@@ -14,7 +14,7 @@ output:
 ## Background
 
 1.  I applied for PGWP on July 5, 2022. After getting the "WP-EXT" letter from the GCKey system almost the same day, I never saw any update from IRCC again;
-2.  My "WP-EXT" has an expiry date of Nov 2, 2022 on it. On Oct 21, 2022, I submitted a "webform" to IRCC requesting a new letter with an extended
+2.  My "WP-EXT" has an expiry date of Nov 2, 2022 on it. On Oct 21, 2022, I submitted a "webform" to IRCC requesting a new letter with an extended expiry.  No response yet.
 
 ## Process
 
