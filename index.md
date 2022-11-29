@@ -15,10 +15,10 @@ Welcome to my GitHub pages!
 
 - This project is about using a publicly available large dataset, training an ensemble machine learning and deploying an API to make the model available on Amazon Web Services (AWS) for doing prediction of daily rainfall of Sydney, Australia.
 
-### Project duration
+#### Project duration
 - 4 weeks with 4 milestones
 
-### AWS Services used
+#### AWS Services used
 - EC2
 - S3
 - EMR (with Apache Spark)
