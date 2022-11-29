@@ -11,6 +11,18 @@ Welcome to my GitHub pages!
 - **UBC Supervisor**: Dr. Simon Goring
 - **Advisor from Partner**: Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 
+## [Project - Cloud Deployment of Machine Learning Model](https://stevenleung2018.github.io/docs/525_project.html)
+
+- This project is about using a publicly available large dataset, training an ensemble machine learning and deploying an API to make the model available on Amazon Web Services (AWS) for doing prediction of daily rainfall of Sydney, Australia.
+
+### Project duration
+- 4 weeks with 4 milestones
+
+### AWS Services used
+- EC2
+- S3
+- EMR (with Apache Spark)
+
 ## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
 
 - DoggoDash is an interactive web app which provides visualizations for users to explore the breeds of dog that best match their preferences.
@@ -32,3 +44,4 @@ Welcome to my GitHub pages!
 - [Non-technical report](https://stevenleung2018.github.io/docs/DSCI_542_Lab2_Report.pdf)
 - [Technical report](https://stevenleung2018.github.io/docs/05_final_report.pdf)
 - [GitHub repo](https://github.com/UBC-MDS/olympic_medal_htest)
+
