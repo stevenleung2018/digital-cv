@@ -2,7 +2,7 @@
 ---
 ---
 
-# Project Report - Cloud Deployment of Machine Learning model
+# Project Report - Cloud Deployment of Machine Learning Model
 
 -   Author: Steven Leung
 -   Credits: project team members including Macy Chan, Zack Tang, Joyce Wang, and course instructor Dr. Gittu George
