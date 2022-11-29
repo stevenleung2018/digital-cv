@@ -2,9 +2,11 @@ Welcome to my GitHub pages!
 
 # Technical Projects
 
-## Capstone project: "Detection and Mitigation of Data Drift and Model Decay" for Goldspot Discoveries Corp. (May-June 2022)
+## Detection and Mitigation of Data Drift and Model Decay (May-June 2022): a capstone project with partner Goldspot Discoveries Corp.
 
-- This project is about the design and implementation of a framework, which is generalized to all datasets and models, for monitoring and detecting data drift and model decay, i.e. when the model needs retraining. 
+- This project is about the design and implementation of a framework in a Python package, which is generalized to all datasets and models, for monitoring and detecting data drift and model decay, i.e. when the model needs retraining. 
+- The findings were presented to the geologists and data scientists of the capstone partner and received positive feedback.
+- Tools/Techniques - PyTorch, Scikit-Learn, Autoencoder, PCA, confidence distribution, image properties, statistical tests, etc.
 - **Developers**: Christopher Alexander, Lianna Hovhannisyan, Joshua Sia and **Steven Leung**
 - **UBC Supervisor**: Dr. Simon Goring
 - **Advisor from Partner**: Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
