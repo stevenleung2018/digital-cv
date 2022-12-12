@@ -23,7 +23,7 @@ Welcome to my GitHub pages!
 - S3
 - EMR (with Apache Spark)
 
-## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com)
+## [DoggoDash](http://dsci532-2022-group18-py.herokuapp.com) (Currently unavailable due to some changes of the Heroku service.)
 
 - DoggoDash is an interactive web dashboard which provides visualizations for users to explore the breeds of dogs that best match their preferences.
 
