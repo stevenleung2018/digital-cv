@@ -40,7 +40,7 @@ output:
 
 ## Checklist of documents to bring:
 1. Passport 
-- You don't need US visa to flagpole. Just be careful not to drive straight into the US.  I recommend that you park and flagpole as a pedestrian.)
+- You don't need US visa to flagpole. Just be careful not to drive straight into the US.  I recommend that you park and flagpole as a pedestrian.
 - Just like the Study Permit, it will not go beyond the expiry of your passport.  So make sure that your passport has at least 3 years on it.
 2. letter of completion or diploma - hard copy
 3. official transcript - Order with SCC and pick up on campus.
