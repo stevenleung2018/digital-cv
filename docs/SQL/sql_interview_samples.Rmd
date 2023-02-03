@@ -1,0 +1,49 @@
+---
+title: "SQL interview samples"
+author: "Steven Leung"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Three large categories of SQL questions
+
+## Computing Ratios
+
+- [SQL LeetCode 1174 Immediate Food Delivery II](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1174_Immediate_Food_Delivery_II.html)
+
+- [LeetCode 1322 Ads Performance](https://leetcode.com/problems/ads-performance)
+
+- [LeetCode 1211 Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage)
+
+## Data Categorization
+
+- [LeetCode 1393 Capital Gain Loss](https://leetcode.com/problems/capital-gainloss)
+
+- [LeetCode 1907 Count Salary Categories](https://leetcode.com/problems/count-salary-categories)
+
+- [LeetCode 1468 Calculate Salaries](https://leetcode.com/problems/calculate-salaries)
+
+- [LeetCode 1212 Team Scores in Football Tournament](https://leetcode.com/problems/team-scores-in-football-tournament)
+
+## Cumulative Sums
+
+- [LeetCode 1097. Game Play Analysis V](https://leetcode.com/problems/game-play-analysis-v)
+
+- [LeetCode 1454. Active Users](https://leetcode.com/problems/active-users)
+
+- [LeetCode 579. Find cumulative salary of an employee](https://leetcode.com/problems/find-cumulative-salary-of-an-employee)
+
+## Self Join
+
+- [LeetCode 1270 All People Report to the Given Manager](https://leetcode.com/problems/all-people-report-to-the-given-manager)
+
+- [LeetCode 1811 Find Interview Candidates](https://leetcode.com/problems/find-interview-candidates)
+
+- [LeetCode 1285 Find the Start and End Number of Continuous Ranges](https://leetcode.com/problems/find-the-start-and-end-number-of-continuous-ranges)
+
+Credit: The list comes from Ms. Emma Ding's [blog post](https://medium.com/@emmading/practice-for-3-types-of-sql-interview-questions-2bd057a88b4f) on Medium.
+
