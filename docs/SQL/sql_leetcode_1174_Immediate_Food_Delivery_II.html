@@ -411,8 +411,8 @@ The customer id 4 has a first order with delivery id 7 and it is immediate.
 Hence, half the customers have immediate first orders.</code></pre>
 </div>
 </div>
-<div id="solution-with-cte-and-window-function" class="section level4">
-<h4>Solution (with CTE and window function)</h4>
+<div id="solution-1-with-cte-and-window-function" class="section level4">
+<h4>Solution 1 (with CTE and window function)</h4>
 <div id="explanation" class="section level5">
 <h5>Explanation</h5>
 <p>The following is the initial solution I came up with, using CTE and
@@ -440,8 +440,8 @@ FROM first_orders
 WHERE order_rank = 1;</code></pre>
 </div>
 </div>
-<div id="solution-with-subquery-in-from-statement" class="section level4">
-<h4>Solution (with subquery in FROM statement)</h4>
+<div id="solution-2-with-subquery-in-from-statement" class="section level4">
+<h4>Solution 2 (with subquery in FROM statement)</h4>
 <div id="explanation-1" class="section level5">
 <h5>Explanation</h5>
 <p>I thought to myself that I should be able to easily “convert” the CTE
@@ -454,15 +454,17 @@ query with CTE a bit better because it is a little more readable.</p>
     ) * 100, 2) AS immediate_percentage
 FROM (
   SELECT *,
-  RANK() OVER (PARTITION BY customer_id ORDER BY order_date) AS order_rank
+  RANK() OVER(PARTITION BY customer_id ORDER BY order_date) AS order_rank
   FROM delivery
 ) AS d_ranked
 WHERE order_rank = 1;
 )</code></pre>
 </div>
 </div>
-<div id="solution-with-subquery-in-where-statement" class="section level4">
-<h4>Solution (with subquery in <code>WHERE</code> statement)</h4>
+<div id="solution-3-with-subquery-in-where-statement" class="section level4">
+<h4>Solution 3 (with subquery in <code>WHERE</code> statement)</h4>
+<div id="explanation-2" class="section level5">
+<h5>Explanation</h5>
 <p>I also tried to think about whether there is another way to check
 whether an order is the first order. So I came up with writing a
 subquery in the <code>WHERE</code> statement using the <code>IN</code>
@@ -484,8 +486,11 @@ WHERE (customer_id, order_date) IN (
   GROUP BY customer_id
 );</code></pre>
 </div>
+</div>
 <div id="solution-by-youtuber-ms-emma-ding" class="section level4">
 <h4>Solution (by YouTuber Ms Emma Ding)</h4>
+<div id="explanation-3" class="section level5">
+<h5>Explanation</h5>
 <p>She uses CTE and a subquery in the <code>SELECT</code> statement, but
 her approach does not require any window function. She also calculates
 the <code>immediate_percentage</code> differently.</p>
@@ -508,6 +513,7 @@ SELECT
     2) AS immediate_percentage
 FROM first_order;</code></pre>
 <p>You can see her video explaining the solution <a href="https://youtu.be/1tfGvvVOF6Q">here</a>.</p>
+</div>
 </div>
 </div>
 

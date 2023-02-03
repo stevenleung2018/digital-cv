@@ -75,7 +75,7 @@ The customer id 4 has a first order with delivery id 7 and it is immediate.
 Hence, half the customers have immediate first orders.
 ```
 
-#### Solution (with CTE and window function)
+#### Solution 1 (with CTE and window function)
 
 ##### Explanation
 
@@ -97,7 +97,7 @@ FROM first_orders
 WHERE order_rank = 1;
 ```
 
-#### Solution (with subquery in FROM statement)
+#### Solution 2 (with subquery in FROM statement)
 
 ##### Explanation
 
@@ -111,14 +111,16 @@ SELECT
     ) * 100, 2) AS immediate_percentage
 FROM (
   SELECT *,
-  RANK() OVER (PARTITION BY customer_id ORDER BY order_date) AS order_rank
+  RANK() OVER(PARTITION BY customer_id ORDER BY order_date) AS order_rank
   FROM delivery
 ) AS d_ranked
 WHERE order_rank = 1;
 )
 ```
 
-#### Solution (with subquery in `WHERE` statement)
+#### Solution 3 (with subquery in `WHERE` statement)
+
+##### Explanation
 
 I also tried to think about whether there is another way to check whether an order is the first order.  So I came up with writing a subquery in the `WHERE` statement using the `IN` function of SQL.  The subquery returns a table of `customer_id` and the `order_date` of the first order.  So the `WHERE` statement filters the `delivery` table so that it will only have all the first orders.
 
@@ -138,6 +140,8 @@ WHERE (customer_id, order_date) IN (
 ```
 
 #### Solution (by YouTuber Ms Emma Ding)
+
+##### Explanation
 
 She uses CTE and a subquery in the `SELECT` statement, but her approach does not require any window function.  She also calculates the `immediate_percentage` differently. 
 
