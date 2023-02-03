@@ -441,12 +441,13 @@ WHERE order_rank = 1;</code></pre>
 </div>
 </div>
 <div id="solution-2-with-subquery-in-from-statement" class="section level4">
-<h4>Solution 2 (with subquery in FROM statement)</h4>
+<h4>Solution 2 (with subquery in <code>FROM</code> statement)</h4>
 <div id="explanation-1" class="section level5">
 <h5>Explanation</h5>
 <p>I thought to myself that I should be able to easily “convert” the CTE
-into a subquery in the FROM statement. So I did. But I consider the
-query with CTE a bit better because it is a little more readable.</p>
+into a subquery in the <code>FROM</code> statement. So I did. But I
+consider the query with CTE a bit better because it is a little more
+readable.</p>
 <pre class="sql"><code>SELECT
   ROUND(
     AVG(

@@ -97,11 +97,11 @@ FROM first_orders
 WHERE order_rank = 1;
 ```
 
-#### Solution 2 (with subquery in FROM statement)
+#### Solution 2 (with subquery in `FROM` statement)
 
 ##### Explanation
 
-I thought to myself that I should be able to easily "convert" the CTE into a subquery in the FROM statement.  So I did.  But I consider the query with CTE a bit better because it is a little more readable.
+I thought to myself that I should be able to easily "convert" the CTE into a subquery in the `FROM` statement.  So I did.  But I consider the query with CTE a bit better because it is a little more readable.
 
 ```{sql 1174_solution_subquery_FROM, eval=FALSE}
 SELECT
