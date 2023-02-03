@@ -411,8 +411,24 @@ The customer id 4 has a first order with delivery id 7 and it is immediate.
 Hence, half the customers have immediate first orders.</code></pre>
 </div>
 </div>
-<div id="solution-with-cte-and-window-function-by-me" class="section level4">
-<h4>Solution (with CTE and window function by me)</h4>
+<div id="solution-with-cte-and-window-function" class="section level4">
+<h4>Solution (with CTE and window function)</h4>
+<div id="explanation" class="section level5">
+<h5>Explanation</h5>
+<p>The following is the initial solution I came up with, using CTE and
+window function. The choice of CTE is obvious, and the reason for the
+window function is that I want to aggregate by the
+<code>order_date</code> column to find the first orders, but I still
+need to the <code>customer_pref_delivery_date</code> column which is not
+aggregated.</p>
+<p>The <code>immediate_percentage</code> being asked is essentially just
+the average of the logical statement
+<code>customer_pref_delivery_date = order_date</code> (aliased to
+<code>immed</code>). In SQL, <code>true</code> is 1 and
+<code>false</code> is 0.</p>
+<p>Originally I had many other columns in the <code>first_orders</code>
+CTE, but I cleaned up by removing all the unused columns to have the
+following:</p>
 <pre class="sql"><code>WITH first_orders AS (
 SELECT 
     RANK() OVER(PARTITION BY customer_id ORDER BY order_date) AS order_rank,
@@ -423,8 +439,14 @@ SELECT ROUND(AVG(first_orders.immed) * 100,2) AS immediate_percentage
 FROM first_orders
 WHERE order_rank = 1;</code></pre>
 </div>
+</div>
 <div id="solution-with-subquery-in-from-statement" class="section level4">
 <h4>Solution (with subquery in FROM statement)</h4>
+<div id="explanation-1" class="section level5">
+<h5>Explanation</h5>
+<p>I thought to myself that I should be able to easily “convert” the CTE
+into a subquery in the FROM statement. So I did. But I consider the
+query with CTE a bit better because it is a little more readable.</p>
 <pre class="sql"><code>SELECT
   ROUND(
     AVG(
@@ -438,23 +460,35 @@ FROM (
 WHERE order_rank = 1;
 )</code></pre>
 </div>
+</div>
 <div id="solution-with-subquery-in-where-statement" class="section level4">
-<h4>Solution (with subquery in WHERE statement)</h4>
+<h4>Solution (with subquery in <code>WHERE</code> statement)</h4>
+<p>I also tried to think about whether there is another way to check
+whether an order is the first order. So I came up with writing a
+subquery in the <code>WHERE</code> statement using the <code>IN</code>
+function of SQL. The subquery returns a table of
+<code>customer_id</code> and the <code>order_date</code> of the first
+order. So the <code>WHERE</code> statement filters the
+<code>delivery</code> table so that it will only have all the first
+orders.</p>
 <pre class="sql"><code>SELECT 
   ROUND(
-  AVG(order_date = customer_pref_del) *
+  AVG(order_date = customer_pref_delivery_date) *
   100, 2) AS immediate_percentage
 FROM delivery
 WHERE (customer_id, order_date) IN (
   SELECT 
     customer_id,
-    MIN(order_date) AS order_date
+    MIN(order_date) AS first_order_date
   FROM delivery
   GROUP BY customer_id
 );</code></pre>
 </div>
-<div id="solution-by-emma-ding" class="section level4">
-<h4>Solution (by Emma Ding)</h4>
+<div id="solution-by-youtuber-ms-emma-ding" class="section level4">
+<h4>Solution (by YouTuber Ms Emma Ding)</h4>
+<p>She uses CTE and a subquery in the <code>SELECT</code> statement, but
+her approach does not require any window function. She also calculates
+the <code>immediate_percentage</code> differently.</p>
 <pre class="sql"><code>WITH first_order AS (
   SELECT
     customer_id
@@ -473,6 +507,7 @@ SELECT
     ) * 100,
     2) AS immediate_percentage
 FROM first_order;</code></pre>
+<p>You can see her video explaining the solution <a href="https://youtu.be/1tfGvvVOF6Q">here</a>.</p>
 </div>
 </div>
 

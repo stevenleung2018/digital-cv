@@ -75,7 +75,15 @@ The customer id 4 has a first order with delivery id 7 and it is immediate.
 Hence, half the customers have immediate first orders.
 ```
 
-#### Solution (with CTE and window function by me)
+#### Solution (with CTE and window function)
+
+##### Explanation
+
+The following is the initial solution I came up with, using CTE and window function.  The choice of CTE is obvious, and the reason for the window function is that I want to aggregate by the `order_date` column to find the first orders, but I still need to the `customer_pref_delivery_date` column which is not aggregated.
+
+The `immediate_percentage` being asked is essentially just the average of the logical statement `customer_pref_delivery_date = order_date` (aliased to `immed`).  In SQL, `true` is 1 and `false` is 0.
+
+Originally I had many other columns in the `first_orders` CTE, but I cleaned up by removing all the unused columns to have the following:
 
 ```{sql 1174_solution_CTE_window, eval=FALSE}
 WITH first_orders AS (
@@ -90,6 +98,10 @@ WHERE order_rank = 1;
 ```
 
 #### Solution (with subquery in FROM statement)
+
+##### Explanation
+
+I thought to myself that I should be able to easily "convert" the CTE into a subquery in the FROM statement.  So I did.  But I consider the query with CTE a bit better because it is a little more readable.
 
 ```{sql 1174_solution_subquery_FROM, eval=FALSE}
 SELECT
@@ -106,24 +118,28 @@ WHERE order_rank = 1;
 )
 ```
 
-#### Solution (with subquery in WHERE statement)
+#### Solution (with subquery in `WHERE` statement)
+
+I also tried to think about whether there is another way to check whether an order is the first order.  So I came up with writing a subquery in the `WHERE` statement using the `IN` function of SQL.  The subquery returns a table of `customer_id` and the `order_date` of the first order.  So the `WHERE` statement filters the `delivery` table so that it will only have all the first orders.
 
 ```{sql 1174_solution_subquery_WHERE, eval=FALSE}
 SELECT 
   ROUND(
-  AVG(order_date = customer_pref_del) *
+  AVG(order_date = customer_pref_delivery_date) *
   100, 2) AS immediate_percentage
 FROM delivery
 WHERE (customer_id, order_date) IN (
   SELECT 
     customer_id,
-    MIN(order_date) AS order_date
+    MIN(order_date) AS first_order_date
   FROM delivery
   GROUP BY customer_id
 );
 ```
 
-#### Solution (by Emma Ding)
+#### Solution (by YouTuber Ms Emma Ding)
+
+She uses CTE and a subquery in the `SELECT` statement, but her approach does not require any window function.  She also calculates the `immediate_percentage` differently. 
 
 ```{sql 1174_solution_ED, eval=FALSE}
 WITH first_order AS (
@@ -145,3 +161,5 @@ SELECT
     2) AS immediate_percentage
 FROM first_order;
 ```
+
+You can see her video explaining the solution [here](https://youtu.be/1tfGvvVOF6Q).
