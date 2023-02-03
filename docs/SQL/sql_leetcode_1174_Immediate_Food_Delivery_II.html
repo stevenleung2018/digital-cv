@@ -457,8 +457,7 @@ FROM (
   RANK() OVER(PARTITION BY customer_id ORDER BY order_date) AS order_rank
   FROM delivery
 ) AS d_ranked
-WHERE order_rank = 1;
-)</code></pre>
+WHERE order_rank = 1;</code></pre>
 </div>
 </div>
 <div id="solution-3-with-subquery-in-where-statement" class="section level4">

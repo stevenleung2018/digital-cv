@@ -115,7 +115,6 @@ FROM (
   FROM delivery
 ) AS d_ranked
 WHERE order_rank = 1;
-)
 ```
 
 #### Solution 3 (with subquery in `WHERE` statement)
