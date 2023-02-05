@@ -1,0 +1,174 @@
+---
+title: "SQL LeetCode 1907 Count Salary Categories"
+author: "Steven Leung"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### [LeetCode 1907: Count Salary Categories](https://leetcode.com/problems/count-salary-categories)
+#### Description
+
+```{sql Table Accounts, eval=FALSE}
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| account_id  | int  |
+| income      | int  |
++-------------+------+
+account_id is the primary key for this table.
+Each row contains information about the monthly income for one bank account.
+```
+
+Write an SQL query to report the number of bank accounts of each salary category. The salary categories are:
+
+"Low Salary": All the salaries strictly less than $20000.
+
+"Average Salary": All the salaries in the inclusive range [$20000, $50000].
+
+"High Salary": All the salaries strictly greater than $50000.
+
+The result table must contain all three categories. If there are no accounts in a category, then report 0.
+
+Return the result table in any order.
+
+The query result format is in the following example.
+
+##### Example 1:
+
+```{sql Example 1, eval=FALSE}
+Input: 
+Accounts table:
++------------+--------+
+| account_id | income |
++------------+--------+
+| 3          | 108939 |
+| 2          | 12747  |
+| 8          | 87709  |
+| 6          | 91796  |
++------------+--------+
+Output: 
++----------------+----------------+
+| category       | accounts_count |
++----------------+----------------+
+| Low Salary     | 1              |
+| Average Salary | 0              |
+| High Salary    | 3              |
++----------------+----------------+
+Explanation: 
+Low Salary: Account 2.
+Average Salary: No accounts.
+High Salary: Accounts 3, 6, and 8.
+```
+
+#### The Non-solution
+
+At first glance, this problem could be solved by a simple query with a `GROUP BY` statement...
+
+```{sql non-solution, eval=FALSE}
+SELECT
+    CASE
+        WHEN income < 20000 THEN 'Low Salary'
+        WHEN 50000 < income THEN 'High Salary'
+        ELSE 'Average Salary'
+    END AS category,
+    COUNT(*) AS accounts_count
+FROM accounts
+GROUP BY category
+```
+
+The output of the above query is the following:
+
+```{sql wrong_output, eval=FALSE}
+| category    | accounts_count |
+| ----------- | -------------- |
+| High Salary | 3              |
+| Low Salary  | 1              |
+```
+
+But the expected output is the following:
+
+```{sql expected_output, eval=FALSE}
+| category       | accounts_count |
+| -------------- | -------------- |
+| High Salary    | 3              |
+| Low Salary     | 1              |
+| Average Salary | 0              |
+```
+
+So the issue is that the aggregation does **not** show the count when it is 0.
+
+I did some googling on how to force SQL to include the 0 count in the output.  It turns out that it is not trivial, and many people suggest using `LEFT JOIN` to a table of the categories.  But apparently it only works if there is already a table of `category` in my case, and there isn't...
+
+So this problem is not as straightforward as it seems.
+
+#### Solution 1
+
+##### Explanation
+
+After the non-solution above, I consider writing a query WITHOUT using aggregation with `GROUP BY`.
+
+In order to that, I break up the three categories, count them individually, and use `UNION` to build the required output.
+
+```{sql solution1, eval=FALSE}
+SELECT 
+    'Low Salary' AS category,
+    COUNT(account_id) as accounts_count
+FROM accounts
+WHERE income < 20000
+UNION
+SELECT
+    'Average Salary' AS category,
+    COUNT(account_id) AS accounts_count
+FROM accounts
+WHERE 20000 <= income AND income <= 50000
+UNION
+SELECT
+    'High Salary' AS category,
+    COUNT(account_id) AS accounts_count
+FROM accounts
+WHERE 50000 < income;
+```
+
+#### Solution 2
+
+##### Explanation
+
+Why do I bother with another solution?
+
+**Solution 1** above works, but I feel that it violates a bit of the DRY principle - "Don't repeat yourself."  What if there were more categories?  I would have as many small queries as the number of categories and I would `UNION` them together.
+
+By combining the techniques of using `UNION` to create a table of categories and `LEFT JOIN` for having the 0 counts, I come up with another solution:
+
+```{sql solution2, eval=FALSE}
+WITH c AS (
+    SELECT 'Low Salary' AS category
+    UNION
+    SELECT 'Average Salary' AS category
+    UNION
+    SELECT 'High Salary' AS category
+),
+cat AS (
+    SELECT
+        CASE
+            WHEN income < 20000 THEN 'Low Salary'
+            WHEN 50000 < income THEN 'High Salary'
+            ELSE 'Average Salary'
+        END AS category,
+        COUNT(*) AS accounts_count
+    FROM accounts
+    GROUP BY category
+)
+SELECT
+    c.category,
+    CASE WHEN accounts_count IS NULL THEN 0
+    ELSE accounts_count END AS accounts_count
+FROM c
+LEFT JOIN cat ON c.category = cat.category
+GROUP by c.category;
+```
+
+Here I use CTEs for readability.  The first CTE `c` is a small table with the three categories.  The second CTE `cat` is the main query with the `GROUP BY` aggregation, which is identical to my non-solution in the beginning.  Then I `LEFT JOIN` table `cat` to table `c` so that I still have all the categories even if any of them has a count of `0`.  The `LEFT JOIN` operation leaves a `NULL` in the column `accounts_count` if the table `cat` does not have the same `category`, and I use the `CASE` statement to "convert" the `NULL` into a `0`.
