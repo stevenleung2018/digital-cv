@@ -101,9 +101,9 @@ But the expected output is the following:
 
 So the issue is that the aggregation does **not** show the count when it is 0.
 
-I did some googling on how to force SQL to include the 0 count in the output.  It turns out that it is not trivial, and many people suggest using `LEFT JOIN` to a table of the categories.  But apparently it only works if there is already a table of `category` in my case, and there isn't...
+I did some googling on how to force SQL to include the 0 count in the output.  It turns out that it is not trivial, and many people suggest using `LEFT JOIN` to a table of the categories.  But apparently it only works if there is already a table of `category`, and there isn't in my case...
 
-So this problem is not as straightforward as it seems.
+So this problem is not as straightforward as it seems.  No wonder it is a "Medium" problem on LeetCode.
 
 #### Solution 1
 
