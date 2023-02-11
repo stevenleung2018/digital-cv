@@ -40,10 +40,10 @@ Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 
 I have learned SQL from UBC and have been honing my skills with exercises on platforms like LeetCode, Hackerrank, etc.  Here are some examples what the problems I solved.  I am challenging myself by trying to solve the same problem with more than one techniques (e.g. CTEs, subqueries and window functions).
 
-Here is an example:
+Here are some examples:
 
 - [LeetCode 1174 - Immediate Food Delivery II](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1174_Immediate_Food_Delivery_II.html)
-- [Leetcode 1811 - Find Interview Candidates](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1907_SQL_LeetCode_1907_Count_Salary_Categories.html)
+- [LeetCode 1811 - Find Interview Candidates](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1811_Find_Interview_Candidates.html)
 
 ## EDAhelper
 
