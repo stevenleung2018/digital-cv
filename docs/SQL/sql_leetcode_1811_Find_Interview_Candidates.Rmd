@@ -1,0 +1,305 @@
+---
+title: "SQL LeetCode 1811: Find Interview Candidates"
+author: "Steven Leung"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### [Leetcode 1811: Find Interview Candidates](https://leetcode.com/problems/find-interview-candidates/description/)
+#### Description
+
+```{sql table `Contests`, eval=FALSE}
++--------------+------+
+| Column Name  | Type |
++--------------+------+
+| contest_id   | int  |
+| gold_medal   | int  |
+| silver_medal | int  |
+| bronze_medal | int  |
++--------------+------+
+contest_id is the primary key for this table.
+This table contains the LeetCode contest ID and the user IDs of the gold, silver, and bronze medalists.
+It is guaranteed that any consecutive contests have consecutive IDs and that no ID is skipped.
+```
+
+```{sql table `Users`, eval=FALSE}
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| user_id     | int     |
+| mail        | varchar |
+| name        | varchar |
++-------------+---------+
+user_id is the primary key for this table.
+This table contains information about the users.
+```
+
+Write an SQL query to report the `name` and the `mail` of all **interview candidates**. A user is an **interview candidate** if **at least one** of these two conditions is true:
+
+- The user won any medal in three or more consecutive contests.
+- The user won the gold medal in three or more different contests (not necessarily consecutive).
+
+Return the result table in **any order**.
+
+The query result format is in the following example.
+
+##### Example 1:
+
+```{sql example 1, eval=FALSE}
+Input: 
+Contests table:
++------------+------------+--------------+--------------+
+| contest_id | gold_medal | silver_medal | bronze_medal |
++------------+------------+--------------+--------------+
+| 190        | 1          | 5            | 2            |
+| 191        | 2          | 3            | 5            |
+| 192        | 5          | 2            | 3            |
+| 193        | 1          | 3            | 5            |
+| 194        | 4          | 5            | 2            |
+| 195        | 4          | 2            | 1            |
+| 196        | 1          | 5            | 2            |
++------------+------------+--------------+--------------+
+Users table:
++---------+--------------------+-------+
+| user_id | mail               | name  |
++---------+--------------------+-------+
+| 1       | sarah@leetcode.com | Sarah |
+| 2       | bob@leetcode.com   | Bob   |
+| 3       | alice@leetcode.com | Alice |
+| 4       | hercy@leetcode.com | Hercy |
+| 5       | quarz@leetcode.com | Quarz |
++---------+--------------------+-------+
+Output: 
++-------+--------------------+
+| name  | mail               |
++-------+--------------------+
+| Sarah | sarah@leetcode.com |
+| Bob   | bob@leetcode.com   |
+| Alice | alice@leetcode.com |
+| Quarz | quarz@leetcode.com |
++-------+--------------------+
+Explanation: 
+Sarah won 3 gold medals (190, 193, and 196), so we include her in the result table.
+Bob won a medal in 3 consecutive contests (190, 191, and 192), so we include him in the result table.
+    - Note that he also won a medal in 3 other consecutive contests (194, 195, and 196).
+Alice won a medal in 3 consecutive contests (191, 192, and 193), so we include her in the result table.
+Quarz won a medal in 5 consecutive contests (190, 191, 192, 193, and 194), so we include them in the result table.
+```
+
+#### Solution
+
+The solution has 2 conditions.  So the final solution should have the candidates with at least 1 condition.  I am going to divide the problem into two parts, one for each condition, and then combine them together at the end.
+
+##### Solution Part 1
+
+This is going to cover the following condition:
+
+- The user won any medal in three or more consecutive contests.
+
+Since it says **any** medal, I need to come up with a table of **medals** with gold, silver and bronze medals all "concatenated" together.
+
+I would write the query like this:
+
+```{sql solution part 1a, eval=FALSE}
+SELECT contest_id, c1.gold_medal AS user_id
+FROM contests as c1
+UNION
+SELECT contest_id, c2.silver_medal AS user_id
+FROM contests as c2
+UNION
+SELECT contest_id, c3.bronze_medal AS user_id
+FROM contests as c3
+```
+
+This will give me the output with two columns, namely `contest_id` and `user_id` (the user who got a medal).
+
+Then by making this an CTE and calling it `medals`, I can use it to count the number of consecutive wins and find who got 3 or more consecutive wins.
+
+In order to calculate the consecutive wins, I did self-joins twice on the same `user_id` and something like `m1.contest_id` = `m2.contest_id - 1`:
+
+```{sql solution part 1b, eval=FALSE}
+WITH medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests as c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests as c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests as c3
+)
+SELECT DISTINCT m1.user_id
+FROM medals AS m1
+JOIN medals AS m2
+ON m1.contest_id = m2.contest_id - 1 AND
+    m1.user_id = m2.user_id
+JOIN medals AS m3
+ON m2.contest_id = m3.contest_id - 1 AND
+    m1.user_id = m3.user_id
+```
+
+The above gives me an output of just 1 column `user_id` having all the users with three (or more) consecutive medals.
+
+##### Solution Part 2
+
+This is going to cover the second condition:
+
+- The user won the gold medal in three or more different contests (not necessarily consecutive).
+
+This is done with simple query with aggregation on `user_id`: 
+
+```{sql Solution Part 2, eval=FALSE}
+SELECT gold_medal AS user_id
+FROM contests
+GROUP BY gold_medal
+HAVING COUNT(gold_medal) >= 3
+```
+
+This above gives me an output also of just 1 column `user_id` having all the users with 3 or more gold medals.
+
+##### Solution 1 (Final)
+
+Putting Solution Parts 1 and 2 together, I have them as CTEs.  In the main query, I check the `user_id` in the `WHERE` statement to see if they appear either in the output of Part 1 or Part 2 or both.  Here is the final solution:
+
+```{sql final solution, eval=FALSE}
+WITH medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests as c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests as c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests as c3
+),
+consecs AS (
+    SELECT DISTINCT m1.user_id
+    FROM medals AS m1
+    JOIN medals AS m2
+    ON m1.contest_id = m2.contest_id - 1 AND
+        m1.user_id = m2.user_id
+    JOIN medals AS m3
+    ON m2.contest_id = m3.contest_id - 1 AND
+        m1.user_id = m3.user_id
+),
+golds AS (
+    SELECT gold_medal AS user_id
+    FROM contests
+    GROUP BY gold_medal
+    HAVING COUNT(gold_medal) >= 3
+)
+SELECT name, mail
+FROM users
+WHERE 
+    user_id IN (
+        SELECT user_id
+        FROM consecs
+    ) OR
+    user_id IN (
+        SELECT user_id
+        FROM golds
+    );
+```
+
+##### Alternative Solutions
+
+I always challenge myself by finding additional different ways of solving the same problems, and see if there can be better solutions.
+
+###### Considerations:
+
+1. In the last `WHERE` statement with the `IN` logical function, it might run a bit more efficiently if there is a `UNION` of the two outputs of from the Solution Parts 1 and 2. Then there is only one `IN` logical function.  Here is the whole query with the main `WHERE` rewritten:
+
+```{sql Alternative Solution 1, eval=FALSE}
+WITH medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests as c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests as c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests as c3
+),
+consecs AS (
+    SELECT DISTINCT m1.user_id
+    FROM medals AS m1
+    JOIN medals AS m2
+    ON m1.contest_id = m2.contest_id - 1 AND
+        m1.user_id = m2.user_id
+    JOIN medals AS m3
+    ON m2.contest_id = m3.contest_id - 1 AND
+        m1.user_id = m3.user_id
+),
+golds AS (
+    SELECT gold_medal AS user_id
+    FROM contests
+    GROUP BY gold_medal
+    HAVING COUNT(gold_medal) >= 3
+)
+SELECT name, mail
+FROM users
+WHERE user_id IN (
+    SELECT user_id
+    FROM consecs
+    WHERE seq_num >= 3
+    UNION 
+    SELECT user_id
+    FROM golds
+)
+```
+
+2. As far as the first condition is concerned, it is looking for the candidate with 3 or more consecutive medals.  In the `consecs` CTE, it is written with 2 (=3-1) `JOIN`s for getting the candidates of 3 or more medals.  The code is not generalized to ask for `n` or more consecutive medals where `n` is any arbitrary integer without rewriting many lines of code.  To generalize the code, I have come up with an CTE called `recursive_medals` which recursively adds a column `seq_num` of sequence numbers `seq_num`.  Then in the `consecs` CTE, it will choose only the maximum `seq_num` for each `user_id`.  And in the main query, the `WHERE` statement will only keep the rows with `seq_num >= 3`, where 3 can be replaced by any arbitrary positive integer.  Here is what the query looks like:
+
+```{sql Alternative Solution 2, eval=FALSE}
+WITH medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests AS c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests AS c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests AS c3
+),
+recursive_medals AS (
+    SELECT contest_id, user_id, 1 AS seq_num
+    FROM medals
+    UNION ALL
+    SELECT m.contest_id, m.user_id, rm.seq_num + 1
+    FROM recursive_medals AS rm
+        JOIN medals m
+        ON m.contest_id = rm.contest_id + 1
+            AND m.user_id = rm.user_id
+),
+consecs AS (
+    SELECT user_id, seq_num
+    FROM (
+        SELECT user_id, seq_num,
+            ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY seq_num DESC) AS rn
+        FROM recursive_medals
+    ) AS rm
+    WHERE rm.rn = 1
+),
+golds AS (
+    SELECT gold_medal AS user_id
+    FROM contests
+    GROUP BY gold_medal
+    HAVING COUNT(gold_medal) >= 3
+)
+SELECT name, mail
+FROM users
+WHERE user_id IN (
+    SELECT user_id
+    FROM consecs
+    WHERE seq_num >= 3
+    UNION 
+    SELECT user_id
+    FROM golds
+);
+```
+
+(Note: At the moment, I could not get the query to run on MySQL, but it runs fine on MS SQL Server.  MySQL apparently does NOT like my recursive CTE.  I will need to investigate further on why that is happening.)
