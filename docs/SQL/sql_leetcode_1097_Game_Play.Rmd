@@ -1,0 +1,60 @@
+---
+title: "SQL LeetCode 1907 Count Salary Categories"
+author: "Steven Leung"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### [LeetCode 1097. Game Play Analysis V](https://leetcode.com/problems/game-play-analysis-v)
+#### Description
+
+#### Solution 1
+
+##### Explanation
+
+
+
+```{sql non-solution, eval=FALSE}
+WITH date_ranks AS (
+    SELECT 
+        RANK() OVER(PARTITION BY player_id ORDER BY event_date) AS date_rank,
+        player_id,
+        device_id,
+        event_date,
+        games_played
+  FROM activity
+),
+install_dates AS (
+    SELECT *
+    FROM date_ranks
+    WHERE date_rank = 1
+)
+SELECT
+    install_dates.event_date AS install_dt,
+    COUNT(install_dates.player_id) as installs,
+    CAST(COUNT(date_ranks.date_rank) AS DECIMAL) / 
+      COUNT(install_dates.player_id) AS Day1_retention
+FROM install_dates
+LEFT JOIN date_ranks
+ON date_ranks.player_id = install_dates.player_id AND
+    date_ranks.date_rank = 2 AND
+    date_ranks.games_played > 0 AND
+    install_dates.event_date + 1 = date_ranks.event_date
+GROUP BY install_dt
+ORDER BY install_dt
+```
+
+
+#### Solution 2
+
+##### Explanation
+
+
+```{sql solution2, eval=FALSE}
+
+```
+
