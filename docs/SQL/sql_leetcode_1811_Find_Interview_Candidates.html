@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-02-10" />
 
-<title>SQL LeetCode 1811: Find Interview Candidates</title>
+<title>SQL LeetCode 1811 - Find Interview Candidates</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,7 +350,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">SQL LeetCode 1811: Find Interview
+<h1 class="title toc-ignore">SQL LeetCode 1811 - Find Interview
 Candidates</h1>
 <h4 class="author">Steven Leung</h4>
 <h4 class="date">2023-02-10</h4>
@@ -358,9 +358,9 @@ Candidates</h1>
 </div>
 
 
-<div id="leetcode-1811-find-interview-candidates" class="section level3">
+<div id="leetcode-1811---find-interview-candidates" class="section level3">
 <h3><a href="https://leetcode.com/problems/find-interview-candidates/description/">Leetcode
-1811: Find Interview Candidates</a></h3>
+1811 - Find Interview Candidates</a></h3>
 <div id="description" class="section level4">
 <h4>Description</h4>
 <pre class="sql"><code>+--------------+------+
@@ -614,7 +614,7 @@ the <code>consecs</code> CTE, it will choose only the maximum
 <code>seq_num</code> for each <code>user_id</code>. And in the main
 query, the <code>WHERE</code> statement will only keep the rows with
 <code>seq_num &gt;= 3</code>, where 3 can be replaced by any arbitrary
-positive integer. Here is what the query would look like:</li>
+positive integer. Here is what the query looks like:</li>
 </ol>
 <pre class="sql"><code>WITH medals AS (
     SELECT contest_id, c1.gold_medal AS user_id
