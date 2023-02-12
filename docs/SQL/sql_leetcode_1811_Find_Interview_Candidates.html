@@ -11,7 +11,7 @@
 
 <meta name="author" content="Steven Leung" />
 
-<meta name="date" content="2023-02-10" />
+<meta name="date" content="2023-02-12" />
 
 <title>SQL LeetCode 1811 - Find Interview Candidates</title>
 
@@ -353,7 +353,7 @@ display: none;
 <h1 class="title toc-ignore">SQL LeetCode 1811 - Find Interview
 Candidates</h1>
 <h4 class="author">Steven Leung</h4>
-<h4 class="date">2023-02-10</h4>
+<h4 class="date">2023-02-12</h4>
 
 </div>
 
@@ -661,10 +661,55 @@ WHERE user_id IN (
     SELECT user_id
     FROM golds
 );</code></pre>
-<p>(Note: At the moment, I could not get the query to run on MySQL, but
-it runs fine on MS SQL Server. MySQL apparently does NOT like my
-recursive CTE. I will need to investigate further on why that is
-happening.)</p>
+<p>Thanks to my friend <a href="https://www.linkedin.com/in/johnny-ho-59959463/">Johnny Ho</a>, he
+pointed out that I need to have the key word <code>RECURSIVE</code>
+after <code>WITH</code> for the the recursive CTE to work in MySQL. Here
+is what the query would look like:</p>
+<pre class="sql"><code>WITH RECURSIVE medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests AS c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests AS c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests AS c3
+),
+recursive_medals AS (
+    SELECT contest_id, user_id, 1 AS seq_num
+    FROM medals
+    UNION ALL
+    SELECT m.contest_id, m.user_id, rm.seq_num + 1
+    FROM recursive_medals AS rm
+        JOIN medals m
+        ON m.contest_id = rm.contest_id + 1
+            AND m.user_id = rm.user_id
+),
+consecs AS (
+    SELECT user_id, seq_num
+    FROM (
+        SELECT user_id, seq_num,
+            ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY seq_num DESC) AS rn
+        FROM recursive_medals
+    ) AS rm
+    WHERE rm.rn = 1
+),
+golds AS (
+    SELECT gold_medal AS user_id
+    FROM contests
+    GROUP BY gold_medal
+    HAVING COUNT(gold_medal) &gt;= 3
+)
+SELECT name, mail
+FROM users
+WHERE user_id IN (
+    SELECT user_id
+    FROM consecs
+    WHERE seq_num &gt;= 3
+    UNION 
+    SELECT user_id
+    FROM golds
+);</code></pre>
 </div>
 </div>
 </div>

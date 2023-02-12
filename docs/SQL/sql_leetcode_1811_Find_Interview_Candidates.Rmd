@@ -254,7 +254,7 @@ WHERE user_id IN (
 
 2. As far as the first condition is concerned, it is looking for the candidate with 3 or more consecutive medals.  In the `consecs` CTE, it is written with 2 (=3-1) `JOIN`s for getting the candidates of 3 or more medals.  The code is not generalized to ask for `n` or more consecutive medals where `n` is any arbitrary integer without rewriting many lines of code.  To generalize the code, I have come up with an CTE called `recursive_medals` which recursively adds a column `seq_num` of sequence numbers `seq_num`.  Then in the `consecs` CTE, it will choose only the maximum `seq_num` for each `user_id`.  And in the main query, the `WHERE` statement will only keep the rows with `seq_num >= 3`, where 3 can be replaced by any arbitrary positive integer.  Here is what the query looks like:
 
-```{sql Alternative Solution 2, eval=FALSE}
+```{sql Alternative Solution 2 for MS SQL Server, eval=FALSE}
 WITH medals AS (
     SELECT contest_id, c1.gold_medal AS user_id
     FROM contests AS c1
@@ -302,4 +302,53 @@ WHERE user_id IN (
 );
 ```
 
-(Note: At the moment, I could not get the query to run on MySQL, but it runs fine on MS SQL Server.  MySQL apparently does NOT like my recursive CTE.  I will need to investigate further on why that is happening.)
+Thanks to my friend [Johnny Ho](https://www.linkedin.com/in/johnny-ho-59959463/), he pointed out that I need to have the key word `RECURSIVE` after `WITH` for the the recursive CTE to work in MySQL.  Here is what the query would look like:
+
+```{sql Alternative Solution 2 for MySQL, eval=FALSE}
+WITH RECURSIVE medals AS (
+    SELECT contest_id, c1.gold_medal AS user_id
+    FROM contests AS c1
+    UNION
+    SELECT contest_id, c2.silver_medal AS user_id
+    FROM contests AS c2
+    UNION
+    SELECT contest_id, c3.bronze_medal AS user_id
+    FROM contests AS c3
+),
+recursive_medals AS (
+    SELECT contest_id, user_id, 1 AS seq_num
+    FROM medals
+    UNION ALL
+    SELECT m.contest_id, m.user_id, rm.seq_num + 1
+    FROM recursive_medals AS rm
+        JOIN medals m
+        ON m.contest_id = rm.contest_id + 1
+            AND m.user_id = rm.user_id
+),
+consecs AS (
+    SELECT user_id, seq_num
+    FROM (
+        SELECT user_id, seq_num,
+            ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY seq_num DESC) AS rn
+        FROM recursive_medals
+    ) AS rm
+    WHERE rm.rn = 1
+),
+golds AS (
+    SELECT gold_medal AS user_id
+    FROM contests
+    GROUP BY gold_medal
+    HAVING COUNT(gold_medal) >= 3
+)
+SELECT name, mail
+FROM users
+WHERE user_id IN (
+    SELECT user_id
+    FROM consecs
+    WHERE seq_num >= 3
+    UNION 
+    SELECT user_id
+    FROM golds
+);
+```
+
