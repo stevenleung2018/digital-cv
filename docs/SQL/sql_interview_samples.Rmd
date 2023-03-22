@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Computing Ratios
 
-- [SQL LeetCode 1174 Immediate Food Delivery II](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1174_Immediate_Food_Delivery_II.html)
+- [LeetCode 1174 Immediate Food Delivery II](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1174_Immediate_Food_Delivery_II.html)
 
 - [LeetCode 1322 Ads Performance](https://leetcode.com/problems/ads-performance)
 
@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Cumulative Sums
 
-- [LeetCode 1097. Game Play Analysis V](https://leetcode.com/problems/game-play-analysis-v)
+- [LeetCode 1097. Game Play Analysis V](https://stevenleung2018.github.io/docs/SQL/sql_leetcode_1097_Game_Play.html)
 
 - [LeetCode 1454. Active Users](https://leetcode.com/problems/active-users)
 
