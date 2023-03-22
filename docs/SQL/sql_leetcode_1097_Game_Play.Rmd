@@ -1,5 +1,5 @@
 ---
-title: "SQL LeetCode 1907 Count Salary Categories"
+title: "SQL LeetCode 1097 Game Play Analysis V"
 author: "Steven Leung"
 date: "`r Sys.Date()`"
 output: html_document
@@ -9,23 +9,87 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### [LeetCode 1097. Game Play Analysis V](https://leetcode.com/problems/game-play-analysis-v)
-#### Description
+# [LeetCode 1097. Game Play Analysis V](https://leetcode.com/problems/game-play-analysis-v)
+## Description
+```{sql table `Activity`, eval=FALSE}
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| player_id    | int     |
+| device_id    | int     |
+| event_date   | date    |
+| games_played | int     |
++--------------+---------+
+(player_id, event_date) is the primary key of this table.
+This table shows the activity of players of some games.
+Each row is a record of a player who logged in and played a number of games (possibly 0) before logging out on someday using some device.
+```
 
-#### Solution 1
+The **install date** of a player is the first login day of that player.
 
-##### Explanation
+We define **day one retention** of some date `x` to be the number of players whose **install date** is `x` and they logged back in on the day right after `x`, divided by the number of players whose install date is `x`, rounded to `2` decimal places.
 
+Write an SQL query to report for each install date, the number of players that installed the game on that day, and the **day one retention**.
 
+Return the result table in **any order**.
 
-```{sql non-solution, eval=FALSE}
+The query result format is in the following example.
+
+### Example 1:
+```{sql example 1, eval=FALSE}
+Input: 
+Activity table:
++-----------+-----------+------------+--------------+
+| player_id | device_id | event_date | games_played |
++-----------+-----------+------------+--------------+
+| 1         | 2         | 2016-03-01 | 5            |
+| 1         | 2         | 2016-03-02 | 6            |
+| 2         | 3         | 2017-06-25 | 1            |
+| 3         | 1         | 2016-03-01 | 0            |
+| 3         | 4         | 2016-07-03 | 5            |
++-----------+-----------+------------+--------------+
+Output: 
++------------+----------+----------------+
+| install_dt | installs | Day1_retention |
++------------+----------+----------------+
+| 2016-03-01 | 2        | 0.50           |
+| 2017-06-25 | 1        | 0.00           |
++------------+----------+----------------+
+Explanation: 
+Player 1 and 3 installed the game on 2016-03-01 but only player 1 logged back in on 2016-03-02 so the day 1 retention of 2016-03-01 is 1 / 2 = 0.50
+Player 2 installed the game on 2017-06-25 but didn't log back in on 2017-06-26 so the day 1 retention of 2017-06-25 is 0 / 1 = 0.00
+```
+
+## Solution 1
+
+### Explanation
+Let us break down the problem by the columns of the expected output:
+
+#### The first column `install_dt`:
+This is how the data will be grouped.
+
+#### The second column `installs`:
+This is a cumulative sum of the number of installs grouped by the install date `install_dt`.  This should be an easy `COUNT` as soon as I have a way to get a list of install dates.
+
+#### The third column `Day1_retention`:
+This is a ratio of number of day 1 retentions to the total number of installs.  Even though this is this is a ratio, since the denominator is just the value in second column `installs`, this column can be calculated with the cumulative sum of the number of day 1 retentions.  This is apparently the hardest part of the whole problem, which I will further explain how I will solve it below.
+
+So basically this problem calculates two cumulative sums grouped by the same variable.
+
+So the hardest part of the problem is how to count the number of day 1 retentions.
+
+The way I do this is by calculating what I call the "date ranks" per player.  Basically I give the number 1 to the first day this player plays the game, number 2 to the second day this player plays the game, etc.  This is what the column `date_rank` in the CTE `date_ranks` does.
+
+And then I created another CTE called `install_dates` which has all the rows where `date_rank = 1`.
+
+Since the final output is very much grouped by the install dates, the CTE `install_dates` is the main table.  I then left join the `date_ranks` with only the second day of playing (i.e. when `date_rank = 2`) and also that it is the next day after the install date (i.e. when `install_dates.event_date + 1 = date_ranks.event_date`).
+
+```{sql Solution 1 for MySQL, eval=FALSE}
 WITH date_ranks AS (
     SELECT 
         RANK() OVER(PARTITION BY player_id ORDER BY event_date) AS date_rank,
         player_id,
-        device_id,
-        event_date,
-        games_played
+        event_date
   FROM activity
 ),
 install_dates AS (
@@ -36,25 +100,103 @@ install_dates AS (
 SELECT
     install_dates.event_date AS install_dt,
     COUNT(install_dates.player_id) as installs,
-    CAST(COUNT(date_ranks.date_rank) AS DECIMAL) / 
-      COUNT(install_dates.player_id) AS Day1_retention
+    ROUND(CAST(COUNT(date_ranks.date_rank) AS DECIMAL) / 
+      COUNT(install_dates.player_id), 2) AS Day1_retention
 FROM install_dates
 LEFT JOIN date_ranks
 ON date_ranks.player_id = install_dates.player_id AND
     date_ranks.date_rank = 2 AND
-    date_ranks.games_played > 0 AND
     install_dates.event_date + 1 = date_ranks.event_date
 GROUP BY install_dt
 ORDER BY install_dt
 ```
 
+Please note that the above would work well on MySQL.  MS SQL Server does NOT like adding an `INT` to a `DATE` so the function `DATEADD` is used.  Also, MS SQL Server does not like the alias assigned in the SELECT statement to be used in the GROUP BY statement.  The query therefore is modified to make it work:
 
-#### Solution 2
-
-##### Explanation
-
-
-```{sql solution2, eval=FALSE}
-
+```{sql Solution 1 for MS SQL Server, eval=FALSE}
+WITH date_ranks AS (
+    SELECT 
+        RANK() OVER(PARTITION BY player_id ORDER BY event_date) AS date_rank,
+        player_id,
+        event_date
+    FROM activity
+),
+install_dates AS (
+    SELECT *
+    FROM date_ranks
+    WHERE date_rank = 1
+)
+SELECT
+    install_dates.event_date AS install_dt,
+    COUNT(install_dates.player_id) as installs,
+    ROUND(CAST(COUNT(date_ranks.date_rank) AS DECIMAL) / 
+      COUNT(install_dates.player_id), 2) AS Day1_retention
+FROM install_dates
+LEFT JOIN date_ranks
+ON date_ranks.player_id = install_dates.player_id AND
+    date_ranks.date_rank = 2 AND
+    install_dates.event_date = DATEADD(day, -1, date_ranks.event_date)
+GROUP BY install_dates.event_date
+ORDER BY install_dt
 ```
+
+## Solution 2
+As I always say, I usually do not stop looking even when I have one solution. I always think about whether I can have a simpler (and usually better) solution.  There is a potential of **NOT** using any window function at all.  And this is the focus of the attempt with **Solution 2**.
+
+### Explanation
+
+One thing I can quickly think of is that the `install_dates` table can be simplified to use an aggregate function instead of depending on the output of a window function.  It can be something like this:
+
+```{sql table `install_dates`, eval=FALSE}
+SELECT MIN(event_date), player_id
+FROM activity
+```
+
+The above will be used as a subquery in **Solution 2**.
+
+And for checking on the playing of the next day, instead of calculating all the date ranks using a window function, we can do that with a left self join on `activity` where `a.event_event = a2.event_date + 1` 
+
+The query would look something like this without CTEs or window function:
+
+```{sql solution2 for MySQL, eval=FALSE}
+SELECT 
+  a.event_date AS install_dt,
+  COUNT(DISTINCT a.player_id) AS installs,
+  ROUND(CAST(COUNT(a2.event_date) AS DECIMAL) 
+    / COUNT(DISTINCT a.player_id), 2) AS Day1_retention
+FROM activity a
+LEFT JOIN activity a2
+  ON a.player_id = a2.player_id AND a2.event_date = a.event_date + 1
+WHERE a.event_date = (
+  SELECT MIN(event_date) 
+  FROM activity 
+  WHERE player_id = a.player_id
+  )
+GROUP BY a.event_date
+ORDER BY a.event_date
+```
+
+Please note that the above query works well on MySQL but not MS SQL Server.  The following is the modified query to work with MS SQL Server (using the `DATEADD` function as explained in **Solution 1**).
+
+```{sql solution2 for MS SQL Server, eval=FALSE}
+SELECT 
+  a.event_date AS install_dt,
+  COUNT(DISTINCT a.player_id) AS installs,
+  ROUND(CAST(COUNT(a2.event_date) AS DECIMAL) 
+    / COUNT(DISTINCT a.player_id), 2) AS Day1_retention
+FROM activity a
+LEFT JOIN activity a2
+  ON a.player_id = a2.player_id AND a2.event_date = DATEADD(day, 1, a.event_date)
+WHERE a.event_date = (
+  SELECT MIN(event_date) 
+  FROM activity 
+  WHERE player_id = a.player_id
+  )
+GROUP BY a.event_date
+ORDER BY a.event_date
+```
+
+## Conclusion
+
+The time complexity of Solution 2, which is `O(n)` where `n` is the number of rows in the `activity` table, than that of Solution 1, which is `O(n log n)`, due to the `RANK()` window function in the CTE.  
 
