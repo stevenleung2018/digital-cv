@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Steven Leung" />
 
-<meta name="date" content="2023-12-06" />
 
-<title>SQL LeetCode 1811 - Find Interview Candidates</title>
+<title>full_cv</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,366 +348,270 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">SQL LeetCode 1811 - Find Interview
-Candidates</h1>
-<h4 class="author">Steven Leung</h4>
-<h4 class="date">2023-12-06</h4>
 
 </div>
 
 
-<div id="leetcode-1811---find-interview-candidates" class="section level3">
-<h3><a href="https://leetcode.com/problems/find-interview-candidates/description/">Leetcode
-1811 - Find Interview Candidates</a></h3>
-<div id="description" class="section level4">
-<h4>Description</h4>
-<pre class="sql"><code>+--------------+------+
-| Column Name  | Type |
-+--------------+------+
-| contest_id   | int  |
-| gold_medal   | int  |
-| silver_medal | int  |
-| bronze_medal | int  |
-+--------------+------+
-contest_id is the primary key for this table.
-This table contains the LeetCode contest ID and the user IDs of the gold, silver, and bronze medalists.
-It is guaranteed that any consecutive contests have consecutive IDs and that no ID is skipped.</code></pre>
-<pre class="sql"><code>+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| user_id     | int     |
-| mail        | varchar |
-| name        | varchar |
-+-------------+---------+
-user_id is the primary key for this table.
-This table contains information about the users.</code></pre>
-<p>Write an SQL query to report the <code>name</code> and the
-<code>mail</code> of all <strong>interview candidates</strong>. A user
-is an <strong>interview candidate</strong> if <strong>at least
-one</strong> of these two conditions is true:</p>
+<div id="curriculum-vitae-of-steven-leung" class="section level1">
+<h1>Curriculum Vitae of Steven Leung</h1>
+<hr />
+<div id="summary" class="section level3">
+<h3>Summary</h3>
 <ul>
-<li>The user won any medal in three or more consecutive contests.</li>
-<li>The user won the gold medal in three or more different contests (not
-necessarily consecutive).</li>
-</ul>
-<p>Return the result table in <strong>any order</strong>.</p>
-<p>The query result format is in the following example.</p>
-<div id="example-1" class="section level5">
-<h5>Example 1:</h5>
-<pre class="sql"><code>Input: 
-Contests table:
-+------------+------------+--------------+--------------+
-| contest_id | gold_medal | silver_medal | bronze_medal |
-+------------+------------+--------------+--------------+
-| 190        | 1          | 5            | 2            |
-| 191        | 2          | 3            | 5            |
-| 192        | 5          | 2            | 3            |
-| 193        | 1          | 3            | 5            |
-| 194        | 4          | 5            | 2            |
-| 195        | 4          | 2            | 1            |
-| 196        | 1          | 5            | 2            |
-+------------+------------+--------------+--------------+
-Users table:
-+---------+--------------------+-------+
-| user_id | mail               | name  |
-+---------+--------------------+-------+
-| 1       | sarah@leetcode.com | Sarah |
-| 2       | bob@leetcode.com   | Bob   |
-| 3       | alice@leetcode.com | Alice |
-| 4       | hercy@leetcode.com | Hercy |
-| 5       | quarz@leetcode.com | Quarz |
-+---------+--------------------+-------+
-Output: 
-+-------+--------------------+
-| name  | mail               |
-+-------+--------------------+
-| Sarah | sarah@leetcode.com |
-| Bob   | bob@leetcode.com   |
-| Alice | alice@leetcode.com |
-| Quarz | quarz@leetcode.com |
-+-------+--------------------+
-Explanation: 
-Sarah won 3 gold medals (190, 193, and 196), so we include her in the result table.
-Bob won a medal in 3 consecutive contests (190, 191, and 192), so we include him in the result table.
-    - Note that he also won a medal in 3 other consecutive contests (194, 195, and 196).
-Alice won a medal in 3 consecutive contests (191, 192, and 193), so we include her in the result table.
-Quarz won a medal in 5 consecutive contests (190, 191, 192, 193, and 194), so we include them in the result table.</code></pre>
-</div>
-</div>
-<div id="solution" class="section level4">
-<h4>Solution</h4>
-<p>The solution has 2 conditions. So the final solution should have the
-candidates with at least 1 condition. I am going to divide the problem
-into two parts, one for each condition, and then combine them together
-at the end.</p>
-<div id="solution-part-1" class="section level5">
-<h5>Solution Part 1</h5>
-<p>This is going to cover the following condition:</p>
+<li>10 years of experience as a technical consultant/project manager
+(with various companies)
 <ul>
-<li>The user won any medal in three or more consecutive contests.</li>
-</ul>
-<p>Since it says <strong>any</strong> medal, I need to come up with a
-table of <strong>medals</strong> with gold, silver and bronze medals all
-“concatenated” together.</p>
-<p>I would write the query like this:</p>
-<pre class="sql"><code>SELECT contest_id, c1.gold_medal AS user_id
-FROM contests as c1
-UNION
-SELECT contest_id, c2.silver_medal AS user_id
-FROM contests as c2
-UNION
-SELECT contest_id, c3.bronze_medal AS user_id
-FROM contests as c3</code></pre>
-<p>This will give me the output with two columns, namely
-<code>contest_id</code> and <code>user_id</code> (the user who got a
-medal).</p>
-<p>Then by making this an CTE and calling it <code>medals</code>, I can
-use it to count the number of consecutive wins and find who got 3 or
-more consecutive wins.</p>
-<p>In order to calculate the consecutive wins, I did self-joins twice on
-the same <code>user_id</code> and something like
-<code>m1.contest_id</code> = <code>m2.contest_id - 1</code>:</p>
-<pre class="sql"><code>WITH medals AS (
-    SELECT contest_id, c1.gold_medal AS user_id
-    FROM contests as c1
-    UNION
-    SELECT contest_id, c2.silver_medal AS user_id
-    FROM contests as c2
-    UNION
-    SELECT contest_id, c3.bronze_medal AS user_id
-    FROM contests as c3
-)
-SELECT DISTINCT m1.user_id
-FROM medals AS m1
-JOIN medals AS m2
-ON m1.contest_id = m2.contest_id - 1 AND
-    m1.user_id = m2.user_id
-JOIN medals AS m3
-ON m2.contest_id = m3.contest_id - 1 AND
-    m1.user_id = m3.user_id</code></pre>
-<p>The above gives me an output of just 1 column <code>user_id</code>
-having all the users with three (or more) consecutive medals.</p>
-</div>
-<div id="solution-part-2" class="section level5">
-<h5>Solution Part 2</h5>
-<p>This is going to cover the second condition:</p>
+<li>Managed projects for new products and services to facilitate the
+company’s growth strategy</li>
+</ul></li>
+<li>4+ years of data &amp; analytics consultancy experience</li>
+<li>Collected business requirements of data problems and defined
+technically and financially feasible project scopes.</li>
+<li>Master of Data Science, UBC
 <ul>
-<li>The user won the gold medal in three or more different contests (not
-necessarily consecutive).</li>
+<li>Gained experience in database development (including data models
+like ERDs), data management and analysis, including validation,
+cleaning, categorizing, forecasting, visualization, and generating
+reports summarizing empirical findings from research and analysis.<br />
+</li>
+<li>Programming/Query Languages – SQL, Python and R</li>
+</ul></li>
+<li>Project Management Professional (PMP) certified since 2017</li>
 </ul>
-<p>This is done with simple query with aggregation on
-<code>user_id</code>:</p>
-<pre class="sql"><code>SELECT gold_medal AS user_id
-FROM contests
-GROUP BY gold_medal
-HAVING COUNT(gold_medal) &gt;= 3</code></pre>
-<p>This above gives me an output also of just 1 column
-<code>user_id</code> having all the users with 3 or more gold
-medals.</p>
+<hr />
 </div>
-<div id="solution-1-final" class="section level5">
-<h5>Solution 1 (Final)</h5>
-<p>Putting Solution Parts 1 and 2 together, I have them as CTEs. In the
-main query, I check the <code>user_id</code> in the <code>WHERE</code>
-statement to see if they appear either in the output of Part 1 or Part 2
-or both. Here is the final solution:</p>
-<pre class="sql"><code>WITH medals AS (
-    SELECT contest_id, c1.gold_medal AS user_id
-    FROM contests as c1
-    UNION
-    SELECT contest_id, c2.silver_medal AS user_id
-    FROM contests as c2
-    UNION
-    SELECT contest_id, c3.bronze_medal AS user_id
-    FROM contests as c3
-),
-consecs AS (
-    SELECT DISTINCT m1.user_id
-    FROM medals AS m1
-    JOIN medals AS m2
-    ON m1.contest_id = m2.contest_id - 1 AND
-        m1.user_id = m2.user_id
-    JOIN medals AS m3
-    ON m2.contest_id = m3.contest_id - 1 AND
-        m1.user_id = m3.user_id
-),
-golds AS (
-    SELECT gold_medal AS user_id
-    FROM contests
-    GROUP BY gold_medal
-    HAVING COUNT(gold_medal) &gt;= 3
-)
-SELECT name, mail
-FROM users
-WHERE 
-    user_id IN (
-        SELECT user_id
-        FROM consecs
-    ) OR
-    user_id IN (
-        SELECT user_id
-        FROM golds
-    );</code></pre>
+<div id="work-experience" class="section level3">
+<h3>Work Experience</h3>
+<div id="project-consultant-of-a.i.head-of-sales-hk-clustertech-limited-november-2016-june-2021" class="section level4">
+<h4>Project Consultant of A.I./Head of Sales (HK), ClusterTech Limited
+(November 2016-June 2021)</h4>
+<div id="contributions" class="section level5">
+<h5>Contributions</h5>
+<ul>
+<li>Rebuilt the sales pipeline so that the company could have revenue of
+HK$14M-HK$16M (pre-COVID-19 pandemic) per year mainly from HOng Kong
+market alone, including:
+<ul>
+<li>Overachieving AI &amp; Analytics target by 209% in FY18/19 by
+devising new go-to-market strategies, including redefining the target
+segments based on the company’s strengths, acquiring new SI/cloud
+service providers, increasing the sales pipeline, and improving the
+success rate of closing deals; and</li>
+<li>Grew CDN business by 21%</li>
+</ul></li>
+</ul>
 </div>
-<div id="alternative-solutions" class="section level5">
-<h5>Alternative Solutions</h5>
-<p>I always challenge myself by finding additional different ways of
-solving the same problems, and see if there can be better solutions.</p>
-<div id="considerations" class="section level6">
-<h6>Considerations:</h6>
-<ol style="list-style-type: decimal">
-<li>In the last <code>WHERE</code> statement with the <code>IN</code>
-logical function, it might run a bit more efficiently if there is a
-<code>UNION</code> of the two outputs of from the Solution Parts 1 and
-2. Then there is only one <code>IN</code> logical function. Here is the
-whole query with the main <code>WHERE</code> rewritten:</li>
-</ol>
-<pre class="sql"><code>WITH medals AS (
-    SELECT contest_id, c1.gold_medal AS user_id
-    FROM contests as c1
-    UNION
-    SELECT contest_id, c2.silver_medal AS user_id
-    FROM contests as c2
-    UNION
-    SELECT contest_id, c3.bronze_medal AS user_id
-    FROM contests as c3
-),
-consecs AS (
-    SELECT DISTINCT m1.user_id
-    FROM medals AS m1
-    JOIN medals AS m2
-    ON m1.contest_id = m2.contest_id - 1 AND
-        m1.user_id = m2.user_id
-    JOIN medals AS m3
-    ON m2.contest_id = m3.contest_id - 1 AND
-        m1.user_id = m3.user_id
-),
-golds AS (
-    SELECT gold_medal AS user_id
-    FROM contests
-    GROUP BY gold_medal
-    HAVING COUNT(gold_medal) &gt;= 3
-)
-SELECT name, mail
-FROM users
-WHERE user_id IN (
-    SELECT user_id
-    FROM consecs
-    WHERE seq_num &gt;= 3
-    UNION 
-    SELECT user_id
-    FROM golds
-)</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>As far as the first condition is concerned, it is looking for the
-candidate with 3 or more consecutive medals. In the <code>consecs</code>
-CTE, it is written with 2 (=3-1) <code>JOIN</code>s for getting the
-candidates of 3 or more medals. The code is not generalized to ask for
-<code>n</code> or more consecutive medals where <code>n</code> is any
-arbitrary integer without rewriting many lines of code. To generalize
-the code, I have come up with an CTE called
-<code>recursive_medals</code> which recursively adds a column
-<code>seq_num</code> of sequence numbers <code>seq_num</code>. Then in
-the <code>consecs</code> CTE, it will choose only the maximum
-<code>seq_num</code> for each <code>user_id</code>. And in the main
-query, the <code>WHERE</code> statement will only keep the rows with
-<code>seq_num &gt;= 3</code>, where 3 can be replaced by any arbitrary
-positive integer. Here is what the query looks like:</li>
-</ol>
-<pre class="sql"><code>WITH medals AS (
-    SELECT contest_id, c1.gold_medal AS user_id
-    FROM contests AS c1
-    UNION
-    SELECT contest_id, c2.silver_medal AS user_id
-    FROM contests AS c2
-    UNION
-    SELECT contest_id, c3.bronze_medal AS user_id
-    FROM contests AS c3
-),
-recursive_medals AS (
-    SELECT contest_id, user_id, 1 AS seq_num
-    FROM medals
-    UNION ALL
-    SELECT m.contest_id, m.user_id, rm.seq_num + 1
-    FROM recursive_medals AS rm
-        JOIN medals m
-        ON m.contest_id = rm.contest_id + 1
-            AND m.user_id = rm.user_id
-),
-consecs AS (
-    SELECT user_id, seq_num
-    FROM (
-        SELECT user_id, seq_num,
-            ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY seq_num DESC) AS rn
-        FROM recursive_medals
-    ) AS rm
-    WHERE rm.rn = 1
-),
-golds AS (
-    SELECT gold_medal AS user_id
-    FROM contests
-    GROUP BY gold_medal
-    HAVING COUNT(gold_medal) &gt;= 3
-)
-SELECT name, mail
-FROM users
-WHERE user_id IN (
-    SELECT user_id
-    FROM consecs
-    WHERE seq_num &gt;= 3
-    UNION 
-    SELECT user_id
-    FROM golds
-);</code></pre>
-<p>Thanks to my friend <a href="https://www.linkedin.com/in/johnny-ho-59959463/">Johnny Ho</a>, he
-pointed out that I need to have the key word <code>RECURSIVE</code>
-after <code>WITH</code> for the the recursive CTE to work in MySQL. Here
-is what the query would look like:</p>
-<pre class="sql"><code>WITH RECURSIVE medals AS (
-    SELECT contest_id, c1.gold_medal AS user_id
-    FROM contests AS c1
-    UNION
-    SELECT contest_id, c2.silver_medal AS user_id
-    FROM contests AS c2
-    UNION
-    SELECT contest_id, c3.bronze_medal AS user_id
-    FROM contests AS c3
-),
-recursive_medals AS (
-    SELECT contest_id, user_id, 1 AS seq_num
-    FROM medals
-    UNION ALL
-    SELECT m.contest_id, m.user_id, rm.seq_num + 1
-    FROM recursive_medals AS rm
-        JOIN medals m
-        ON m.contest_id = rm.contest_id + 1
-            AND m.user_id = rm.user_id
-),
-consecs AS (
-    SELECT user_id, seq_num
-    FROM (
-        SELECT user_id, seq_num,
-            ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY seq_num DESC) AS rn
-        FROM recursive_medals
-    ) AS rm
-    WHERE rm.rn = 1
-),
-golds AS (
-    SELECT gold_medal AS user_id
-    FROM contests
-    GROUP BY gold_medal
-    HAVING COUNT(gold_medal) &gt;= 3
-)
-SELECT name, mail
-FROM users
-WHERE user_id IN (
-    SELECT user_id
-    FROM consecs
-    WHERE seq_num &gt;= 3
-    UNION 
-    SELECT user_id
-    FROM golds
-);</code></pre>
+<div id="responsibilities" class="section level5">
+<h5>Responsibilities</h5>
+<ul>
+<li><strong>Primary role</strong> - Team Leader of Sales of Hong Kong
+market of advanced IT solutions including but not limtied to High
+Performance Computing (HPC), Numberical Weather Prediction, Big Data
+Analytics, A.I., Cloud and DNS/CDN Solutions</li>
+<li>Managed P&amp;L of Sales. Technologies included high-performance
+computing (HPC) and AI/ML/Analytics.</li>
+<li>Provided full customer lifecycle consultancy of data science
+projects to clients from pre-sales to delivery.</li>
+<li>Managed a small sales team (2 salesepople and 1 sales administrator)
+to achieve sales quota.</li>
+<li>Led the preparation efforts of the complex RFP responses in
+collaboration with the data science team and external partners.</li>
+<li>Developped and delivered compelling customer presetnations to
+articulate value propositions and unique business value</li>
+<li>Led interactive customer workshops to design complex solutions on
+various business intelligence, machine learning and/or Big Data analytic
+products and solutions.</li>
+<li>Worked with technical teams to accurately scope and provided efforts
+estimates for presales engagements, Proofs-of-Concept and the
+projects.</li>
+<li>Represented the company at the industry events to promote products
+and services.</li>
+</ul>
+<div id="customers-i-worked-with-partial-list" class="section level6">
+<h6>Customers I worked with (Partial List):</h6>
+<ul>
+<li>Government – HK Observatory, Environmental Protection Dept,
+Electrical and Mechanical Services Dept, Transport Dept, OGCIO,
+Efficiency Office, Hospital Authority, Airport Authority</li>
+<li>Energy - CLP</li>
+<li>NGO/Non-profit – Hong Kong Federation of Youth Groups (HKFYG)</li>
+<li>Real Estate – New World Development</li>
+<li>Architect/Construction/Infrastructure - SMEC</li>
+<li>Banking – CCB Int’l, HSBC, Bank of China Credit Cards (BoCCC), Bank
+of China International (BOCI), DBS Singapore</li>
+<li>Insurance - MSIG</li>
+<li>Retail – Swire Resources, ZTAMPZ, Li &amp; Fung, Adidas, Skechers,
+Strawberrynet</li>
+<li>Media and Entertainment – Next Digital, mm2 Entertainment</li>
+<li>Telecom – CSL, SmarTone</li>
+<li>Transportation - MTRCL</li>
+<li>Universities – CityU, PolyU, Modern Education, Chinese University of
+Hong Kong, University of Hong Kong, HKUST</li>
+</ul>
+</div>
+<div id="partners-i-worked-with-partial-list" class="section level6">
+<h6>Partners I worked with (Partial List):</h6>
+<ul>
+<li>Google, IBM, Verizon (VDMS/Edgecast), AWS</li>
+</ul>
+</div>
+<div id="projects-partial-list" class="section level6">
+<h6>Projects (Partial List):</h6>
+<ul>
+<li>HKFYG (the larget non-government non-profit youth service provider
+in Hong Kong) - Project RADAR II (funded by Beat Drugs Fund of the Hong
+Kong Government) for analyzing <a href="https://www.clustertech.com/News/AI-and-Analytics/ClusterTech-cooperates-The-Hong-Kong-Federation-Youth-Groups-Youth-Crime-Prevention-Centre">Link</a></li>
+<li>Email Analytics for Trending New Win/Loss Chance and Customer
+Retention with IBM Watson Natural Language Understanding</li>
+<li>Customer Feedback Analytics for Large Enterprises with Machine
+learning/Natural Language Processing.</li>
+<li>Recommendation Engine with Machine learning/Natural Language
+Processing for a major media company in Hong Kong.</li>
+<li>Machine learning/Natural Language Processing for Law
+Enforcement.</li>
+<li>Performance overhaul of consolidation optimization system for
+fashion chains of Swire Resources.</li>
+<li>Enhancement of Microsoft Sharepoint’s DMS function with text mining
+for a major Chinese investment bank in Hong Kong.</li>
+<li>Various proposal preparations for turnkey solutions for large-scale
+Big Data and analytics RFPs.</li>
+</ul>
+</div>
+</div>
+<div id="public-presentations" class="section level5">
+<h5>Public Presentations</h5>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=o7gcxLfbv0Y">ClusterTech
+Demonstrates How NLP Can Facilitate in Financial Industry</a> (June
+2020)</li>
+<li><a href="https://www.youtube.com/watch?v=HnlXPvLIXR0">Using AI to
+Thrive in Challenging Times (ClusterTech X Pure Storage X NVIDIA
+Webinar)</a> (November 2020)</li>
+</ul>
+</div>
+</div>
+<div id="regional-account-manager-asia-pacific-the-collinson-group-november-2015-november-2016" class="section level4">
+<h4>Regional Account Manager (Asia Pacific), The Collinson Group
+(November 2015-November 2016)</h4>
+<ul>
+<li>Managed client relationships with the key account MasterCard, and
+the projects including digital lounge programs.</li>
+<li>Supported account servicing activities and achieved the required SLA
+(100% since Dec 2015).</li>
+</ul>
+</div>
+<div id="business-solutions-consultant-business-markets-smartone-mobile-communications-limited-august-2013-november-2015" class="section level4">
+<h4>Business Solutions Consultant, Business Markets, SmarTone Mobile
+Communications Limited (August 2013-November 2015)</h4>
+<ul>
+<li>Managed projects of productization and implementations to enable
+essential B2B products and services from initial qualification to going
+live. Solutions included the following areas: SmarTone Cloud, Metro
+Ethernet and MPLS VPN, Mobile Device Management, Apple Device Enrollment
+Program, Wi-Fi Solutions for Enterprises, Mobile App Development, Retail
+Industry Solutions, etc.</li>
+<li>Enhanced the ICT solution selling skills of the department by
+developing the ICT Training Program.</li>
+<li>Conducted monthly ICT business reviews with the CEO and senior
+management team. Tools used: Cognos and MS Excel.</li>
+</ul>
+</div>
+<div id="channel-partners-and-alliances-manager-asia-pacific-region-ineoquest-inc.-may-2011-july-2013" class="section level4">
+<h4>Channel Partners and Alliances Manager, Asia Pacific Region,
+IneoQuest Inc. (May 2011-July 2013)</h4>
+<ul>
+<li>Managed alliance/partnerships in the Asia Pacific Region</li>
+</ul>
+</div>
+<div id="regional-sales-manager-asia-pacific-region-witbe-limited-2009-2010" class="section level4">
+<h4>Regional Sales Manager, Asia Pacific Region, Witbe Limited
+(2009-2010)</h4>
+<ul>
+<li>Won sales opportunities of turnkey solutions (up to EUR900k (eq.
+CAD1.4M) in contract value) from initial qualification/presetntation to
+RFP responses to deal closing.</li>
+</ul>
+</div>
+<div id="product-specialist-asia-pacific-region-veriwave-inc.-2006-2008" class="section level4">
+<h4>Product Specialist, Asia Pacific Region, VeriWave
+Inc. (2006-2008)</h4>
+</div>
+<div id="sales-development-manager-asia-pacific-region-last-position-held-spirent-communications-asia-limited-1998-2006" class="section level4">
+<h4>Sales Development Manager, Asia Pacific Region (last position held),
+Spirent Communications (Asia) Limited (1998-2006)</h4>
+<div id="award" class="section level5">
+<h5>Award</h5>
+<p>President’s Club in 1999, 2004.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="education" class="section level3">
+<h3>Education</h3>
+<div id="master-of-data-science-university-of-british-columbia-2021-2022" class="section level4">
+<h4>Master of Data Science, University of British Columbia
+(2021-2022)</h4>
+<ul>
+<li>CGPA = 93.3% (A+ equivalent)</li>
+<li>Relevant courses: Algorithms &amp; Data Structures, Databases,
+Spatial &amp; Time Series Analysis, Data Visualization, Automated
+Workflows, Machine Learning, NLP, Ethics, Cloud Computing, Capstone
+Project</li>
+<li>Further details: <a href="https://masterdatascience.ubc.ca/programs/vancouver/">UBC
+MDS</a></li>
+</ul>
+<div id="projects-at-ubc-github-pages" class="section level5">
+<h5>Projects at UBC (<a href="https://stevenleung2018.github.io">GitHub
+pages</a>)</h5>
+<ul>
+<li>Capstone Project (May-Jun 2022): “Detection and Mitigation of Data
+Drift and Model Decay” for Goldspot Discoveries Corp.</li>
+<li>Designed and implemented an expandable framework in a Python
+package, which is generalized to all datasets and models, for monitoring
+and detecting data drift and model decay.</li>
+<li>Tools/Techniques: PyTorch, Sci-kit Learn, Autoencoder, PCA,
+confidence distribution, image properties, statistical tests, etc.</li>
+<li>Cloud Deployment of Machine Learning Model (Mar-Apr 2022): deploying
+an API on AWS of a machine learning model for predicting the daily
+rainfall of Sydney, Australia, by using a publicly available large
+dataset (EC2, S3, EMR)</li>
+<li>DoggoDash (Feb-Mar 2022): an interactive dashboard for recommending
+dogs for potential dog owners (Python, Heroku, Plotly)</li>
+<li>EDAhelper (Jan-Feb 2022): open-source software packages in Python
+and R for simplifying Exploratory Data Analysis to one-line codes</li>
+<li>Olympic Medals (Nov-Dec 2021): reproducible data science report of
+the hypothesis testing on whether age is an advantage of winning
+medals</li>
+</ul>
+</div>
+</div>
+<div id="bachelor-of-science-in-computer-science-and-engineering-university-of-california-los-angeles-1994-1998" class="section level4">
+<h4>Bachelor of Science in Computer Science and Engineering, University
+of California, Los Angeles (1994-1998)</h4>
+<div id="awards" class="section level5">
+<h5>Awards</h5>
+<ul>
+<li>Member of Tau Beta Pi, a national engineering honour society,
+initiated as top 1/8 of engineering class</li>
+<li>Dean’s Honor List, School of Engineering and Applied Science</li>
+</ul>
+</div>
+</div>
+<div id="executive-eduation---leading-for-success-10-day-consortium-program-hong-kong-university-of-science-and-technology-2015" class="section level4">
+<h4>Executive Eduation - “Leading for Success 10-Day Consortium
+Program”, Hong Kong University of Science and Technology (2015)</h4>
+</div>
+<div id="certification-other-professional-training" class="section level4">
+<h4>Certification / Other Professional Training</h4>
+<div id="project-management-professional-pmp-number-2116816-since-december-19-2017" class="section level5">
+<h5>Project Management Professional (PMP) (Number: 2116816) (since
+December 19, 2017)</h5>
+</div>
+<div id="effective-use-of-microsoft-excel-for-business-analysis-2015" class="section level5">
+<h5>Effective Use of Microsoft Excel for Business Analysis (2015)</h5>
+</div>
+<div id="architecting-on-aws-2015" class="section level5">
+<h5>Architecting on AWS (2015)</h5>
 </div>
 </div>
 </div>
