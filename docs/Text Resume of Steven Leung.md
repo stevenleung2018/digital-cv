@@ -1,5 +1,5 @@
 # STEVEN LEUNG, MASTER OF DATA SCIENCE, PMP
-- steven.leung@alumni.ucla.edu, +1-604-499-3173, LinkedIn: www.linkedin.com/in/stevenleung08, GitHub: stevenleung2018.github.io
+- steven.leung@alumni.ucla.edu, Mobile: 604-499-3173, [LinkedIn](www.linkedin.com/in/stevenleung08), [GitHub]( stevenleung2018.github.io)
 
 ## HIGHLIGHTS OF PROFILE
 - 6 months of experience (PC-02) as Wildlife Application Specialist at Canadian Wildlife Service, ECCC.
