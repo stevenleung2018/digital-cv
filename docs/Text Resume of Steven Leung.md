@@ -21,7 +21,7 @@ output:
 
 ## RELEVANT PROFESSIONAL EXPERIENCE
 ### Wildlife Application Specialist (PC-02), Canadian Wildlife Service of Environment and Climate Change Canada, June 2023-Present
-- Develop materials (requested by management and required by the Project Management Framework) contributing to an application modernization strategy.
+- Develop materials requested by management and required by the Project Management Framework contributing to an application modernization strategy.
 - Assist data migration by writing data extraction and transformation scripts in the context of application consolidation.
 - Achieved releases within the required timelines (100% in since July 2023) for the Species at Risk-Data Management and Tracking System (SAR-DMTS) by leading the UATs and collaborating with Subject Matter Experts (SMEs) from within ECCC and other departments (DFO and PC), and by collaborating with Product Owners and development team to resolve issues by fixing the bugs in time or finding mutually acceptable workarounds.  SAR-DMTS is the internal system used by ECCC, DFO and PC behind the [Species at risk public registry](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry.html) for the administration of the Species at Risk Act (SARA).
 - Achieved release on time (Dec 2023) for the Nature Results Tracker (NRT) project by delivering Python and SQL coding support for the testing of PDF reports and data pipeline development. 
