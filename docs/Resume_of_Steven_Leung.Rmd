@@ -1,13 +1,18 @@
 ---
+comment: |
+  This file is my data-driven resume.  It can be used for generating HTML, PDF and Word versions of the resume.
+  If a text (actually Markdown) version is desired, the following command can be used:
+  Rscript -e "rmarkdown::render('Resume_of_Steven_leung.Rmd', output_format='md_document')"
 output:
-  word_document: default
   pdf_document:
     latex_engine: xelatex
   html_document:
     df_print: paged
+  word_document: default
 fontsize: 11pt
 header-includes: |-
-  \usepackage[T1]{fontenc} \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc} 
+  \usepackage[utf8]{inputenc}
   % It allows me to place the tables or images where I want, whether there is space or not \usepackage{float}
   % It has several commands to have more control over the tables (at least I use it for this) \usepackage{array}
   % For custom headers and footers \usepackage{fancyhdr}
@@ -36,9 +41,9 @@ time_lapsed_str <- paste0(round(time_lapsed + 0.5, 0), " months")
   - Qualified in a pool for IT-02 with Shared Services Canada (SSC)
 - Security: Reliability
 - 10 years of experience as a technical consultant/project manager (with various companies)
-- 4+ years of data & analytics client-facing consultancy experience
+- 4.5+ years of data & analytics client-facing consultancy experience
 - Master of Data Science, UBC
-- Programming/Query Languages – Python, R, SQL
+- Programming/Query Languages – Python, SQL, R
 - Project Management Professional (PMP) certified since 2017
 
 ## RELEVANT PROFESSIONAL EXPERIENCE

@@ -17,9 +17,9 @@
 -   Security: Reliability
 -   10 years of experience as a technical consultant/project manager
     (with various companies)
--   4+ years of data & analytics client-facing consultancy experience
+-   4.5+ years of data & analytics client-facing consultancy experience
 -   Master of Data Science, UBC
--   Programming/Query Languages – Python, R, SQL
+-   Programming/Query Languages – Python, SQL, R
 -   Project Management Professional (PMP) certified since 2017
 
 ## RELEVANT PROFESSIONAL EXPERIENCE
