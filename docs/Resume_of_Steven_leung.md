@@ -6,7 +6,7 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   7 months of experience as Wildlife Application Specialist at
+-   6 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
