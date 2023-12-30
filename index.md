@@ -13,8 +13,10 @@ Welcome to my GitHub pages!
 
 #### Developers
 Christopher Alexander, Lianna Hovhannisyan, Joshua Sia and **Steven Leung**
+
 #### UBC Supervisor
 Dr. Simon Goring
+
 #### Advisor from Partner
 Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 
