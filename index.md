@@ -32,7 +32,7 @@ Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 - S3
 - EMR (with Apache Spark)
 
-## DoggoDash
+## [DoggoDash](https://doggodash.onrender.com)
 
 - DoggoDash is an interactive web dashboard which provides visualizations for users to explore the breeds of dogs that best match their preferences.
 
