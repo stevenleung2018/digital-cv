@@ -4,11 +4,11 @@ comment: |
   If a text (actually Markdown) version is desired, the following command can be used:
   Rscript -e "rmarkdown::render('full_cv.Rmd', output_format='md_document')"
 output:
-  word_document: default
-  pdf_document:
-    latex_engine: xelatex
   html_document:
     df_print: paged
+  pdf_document:
+    latex_engine: xelatex
+  word_document: default
 fontsize: 11pt
 header-includes: |-
   \usepackage[T1]{fontenc} 
@@ -31,18 +31,18 @@ time_lapsed_str <- paste0(round(time_lapsed, 0), " months")
 ```
 
 # Curriculum Vitae of Steven Leung
+- steven.leung@alumni.ucla.edu, Mobile: 604-499-3173, [LinkedIn](www.linkedin.com/in/stevenleung08), [GitHub](stevenleung2018.github.io)
 
 ## Summary
 
--   6 months of experience as Wildlife Application Specialist at
+- `r time_lapsed_str` of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
--   Classification:
-    -   Currently PC-02
-    -   Qualified in a pool for EC-03 with Public Health Agency of
-        Canada (PHAC)
-    -   Qualified in a pool for IT-02 with Shared Services Canada (SSC)
--   Security: Reliability
+- Classification:
+  - Currently PC-02
+  - Qualified in a pool for EC-03 (Data Scientist/Data Engineer/Data Analyst) with Public Health Agency of Canada (PHAC)
+  - Qualified in a pool for IT-02 (IT Analyst) with Shared Services Canada (SSC)
+- Security: Reliability
 - 10 years of experience as a technical consultant/project manager (with various companies)
   -	Managed projects for new products and services to facilitate the company’s growth strategy
 -	4+ years of data & analytics consultancy experience
