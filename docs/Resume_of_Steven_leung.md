@@ -6,14 +6,15 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   6 months of experience as Wildlife Application Specialist at
+-   7 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
     -   Currently PC-02
-    -   Qualified in a pool for EC-03 with Public Health Agency of
-        Canada (PHAC)
-    -   Qualified in a pool for IT-02 with Shared Services Canada (SSC)
+    -   Qualified in a pool for EC-03 (Data Scientist/Data Engineer/Data
+        Analyst) with Public Health Agency of Canada (PHAC)
+    -   Qualified in a pool for IT-02 (IT Analyst) with Shared Services
+        Canada (SSC)
 -   Security: Reliability
 -   10 years of experience as a technical consultant/project manager
     (with various companies)
@@ -31,14 +32,14 @@
     modernization strategy.
 -   Assist data migration by writing data extraction and transformation
     scripts in the context of application consolidation.
--   Achieve releases within the required timelines (100% in since
-    July 2023) for the Species at Risk-Data Management and Tracking
-    System (SAR-DMTS) by leading the UATs and collaborating with Subject
-    Matter Experts (SMEs) from within ECCC and other departments (DFO
-    and PC), and by collaborating with Product Owners and development
-    team to resolve issues by fixing the bugs in time or finding
-    mutually acceptable workarounds. SAR-DMTS is the internal system
-    used by ECCC, DFO and PC behind the [Species at risk public
+-   Achieve releases within the required timelines (100% so far) for the
+    Species at Risk-Data Management and Tracking System (SAR-DMTS) by
+    leading the UATs and collaborating with Subject Matter Experts
+    (SMEs) from within ECCC and other departments (DFO and PC), and by
+    collaborating with Product Owners and development team to resolve
+    issues by fixing the bugs in time or finding mutually acceptable
+    workarounds. SAR-DMTS is the internal system used by ECCC, DFO and
+    PC behind the [Species at risk public
     registry](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry.html)
     for the administration of the Species at Risk Act (SARA).
 -   Achieve release on time (most recently in Dec 2023) for the Nature
@@ -91,9 +92,9 @@
     Project
 -   Data visualization: Altair, ggplot2, Dash, Plotly, Heroku, Shiny,
     Kepler.gl, MS Excel, Tableau, PowerBI
--   Cloud Platforms/Tools: Azure DevOps, AWS (S3, EMR, EC2), docker,
-    git, GitHub Actions (e.g. CI/CD), GNU make, PostgreSQL, MongoDB,
-    Spark, Heroku, conda, VS Code, Jupyter, RStudio
+-   Platforms/Tools: Azure DevOps, AWS (S3, EMR, EC2), FME (Safe
+    Software), docker, git, GitHub Actions (e.g. CI/CD), GNU make,
+    PostgreSQL, MongoDB, Spark, Heroku, conda, VS Code, Jupyter, RStudio
 -   Machine learning: classification, regression, linear models,
     decision tree, random forest, SVM, k-NN, clustering, natural
     language processing, ensemble methods, deep learning with neural
@@ -136,8 +137,9 @@
     an API on AWS of a machine learning model for predicting the daily
     rainfall of Sydney, Australia, by using a publicly available large
     dataset (EC2, S3, EMR)
--   DoggoDash (Feb-Mar 2022): an interactive dashboard for recommending
-    dogs for potential dog owners (Python, Heroku, Plotly)
+-   [DoggoDash](https://doggodash.onrender.com) (Feb-Mar 2022): an
+    interactive dashboard for recommending dogs for potential dog owners
+    (Python, Heroku, Plotly)
 -   EDAhelper (Jan-Feb 2022): open-source software packages in Python
     and R for simplifying Exploratory Data Analysis to one-line codes
 -   Olympic Medals (Nov-Dec 2021): reproducible data science report of
@@ -148,7 +150,7 @@
 
 ### Mentor for MDS students, UBC, November 2023-Present
 
--   Mentor two current sutdents as they prepare for their careers after
+-   Mentor two current students as they prepare for their careers after
     graduation from MDS in June 2024.
 
 ## OTHER EDUCATION
