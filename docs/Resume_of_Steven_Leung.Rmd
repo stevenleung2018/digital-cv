@@ -4,11 +4,11 @@ comment: |
   If a text (actually Markdown) version is desired, the following command can be used:
   Rscript -e "rmarkdown::render('Resume_of_Steven_leung.Rmd', output_format='md_document')"
 output:
-  pdf_document:
-    latex_engine: xelatex
   word_document: default
   html_document:
     df_print: paged
+  pdf_document:
+    latex_engine: xelatex
 fontsize: 11pt
 header-includes: |-
   \usepackage[T1]{fontenc} 
@@ -30,7 +30,7 @@ time_lapsed <- interval(start_date, end_date) / months(1)
 time_lapsed_str <- paste0(round(time_lapsed, 0), " months")
 ```
 # STEVEN LEUNG, Master of Data Science, PMP
-- steven.leung@alumni.ucla.edu, Mobile: 604-499-3173, [LinkedIn](www.linkedin.com/in/stevenleung08), [GitHub](stevenleung2018.github.io)
+- steven.leung@alumni.ucla.edu, Mobile: 604-499-3173, [LinkedIn](https://www.linkedin.com/in/stevenleung08), [GitHub](stevenleung2018.github.io)
 
 \relsize{-2}
 ## HIGHLIGHTS OF PROFILE

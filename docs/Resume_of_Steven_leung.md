@@ -1,7 +1,7 @@
 # STEVEN LEUNG, Master of Data Science, PMP
 
 -   <steven.leung@alumni.ucla.edu>, Mobile: 604-499-3173,
-    [LinkedIn](www.linkedin.com/in/stevenleung08),
+    [LinkedIn](https://www.linkedin.com/in/stevenleung08),
     [GitHub](stevenleung2018.github.io)
 
 ## HIGHLIGHTS OF PROFILE
@@ -86,7 +86,7 @@
 -   Languages: Python (PyTorch, Pandas, Numpy, Geopandas), R, SQL,
     MongoDB, Stan
 -   Microsoft 365 including MS Excel (VLOOKUP, Pivot Tables),
-    Powerpoint, Word, Power BI
+    Powerpoint, Word, Power BI and Access
 -   APIs: REST APIs, JSON and XML
 -   Project Management tools: Azure DevOps, GitHub, Trello, Microsoft
     Project
