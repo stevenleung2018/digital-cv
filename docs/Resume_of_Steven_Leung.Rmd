@@ -5,10 +5,10 @@ comment: |
   Rscript -e "rmarkdown::render('Resume_of_Steven_leung.Rmd', output_format='md_document')"
 output:
   word_document: default
-  html_document:
-    df_print: paged
   pdf_document:
     latex_engine: xelatex
+  html_document:
+    df_print: paged
 fontsize: 11pt
 header-includes: |-
   \usepackage[T1]{fontenc} 
