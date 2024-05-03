@@ -4,11 +4,11 @@ comment: |
   If a text (actually Markdown) version is desired, the following command can be used:
   Rscript -e "rmarkdown::render('Resume_of_Steven_leung.Rmd', output_format='md_document')"
 output:
+  pdf_document:
+    latex_engine: xelatex
   word_document: default
   html_document:
     df_print: paged
-  pdf_document:
-    latex_engine: xelatex
 fontsize: 11pt
 header-includes: |-
   \usepackage[T1]{fontenc} 
@@ -98,6 +98,7 @@ time_lapsed_str <- paste0(round(time_lapsed, 0), " months")
   - Developed open-source software packages that transform complex Exploratory Data Analysis into one-line codes, streamlining the data exploration process for analysts.
 - Olympic Medals (Nov-Dec 2021): A reproducible data science report on the impact of age on winning medals
   - Conducted a comprehensive study using reproducible data science techniques to test the hypothesis that age is a factor in winning Olympic medals, yielding insights into the correlation between age and athletic performance.
+
 ## VOLUNTEERING
 ### Mentor for MDS students, UBC, November 2023-April 2024
 - Guided and supported two MDS students, providing strategic advice and fostering professional development to prepare them for successful careers post-graduation in June 2024.

@@ -147,8 +147,12 @@
     -   Conducted a comprehensive study using reproducible data science
         techniques to test the hypothesis that age is a factor in
         winning Olympic medals, yielding insights into the correlation
-        between age and athletic performance. \## VOLUNTEERING \###
-        Mentor for MDS students, UBC, November 2023-April 2024
+        between age and athletic performance.
+
+## VOLUNTEERING
+
+### Mentor for MDS students, UBC, November 2023-April 2024
+
 -   Guided and supported two MDS students, providing strategic advice
     and fostering professional development to prepare them for
     successful careers post-graduation in June 2024.
