@@ -151,11 +151,15 @@
 
 ## VOLUNTEERING
 
-### Mentor for MDS students, UBC, November 2023-April 2024
-
--   Guided and supported two MDS students, providing strategic advice
-    and fostering professional development to prepare them for
-    successful careers post-graduation in June 2024.
+-   Mentor for MDS students, UBC, November 2023-April 2024
+    -   Guided and supported two MDS students, providing strategic
+        advice and fostering professional development to prepare them
+        for successful careers post-graduation in June 2024.
+-   Workshop on Project Management for MDS students, UBC, April 2024
+    -   Delivered a workshop on project management best practices,
+        sharing insights on effective project planning, execution, and
+        monitoring to enhance students’ understanding of project
+        management principles.
 
 ## OTHER EDUCATION
 
