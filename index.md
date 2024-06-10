@@ -39,7 +39,6 @@ Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 ![DoggoDash sample screenshot](img/sketch2.png) - [GitHub repo](https://github.com/stevenleung2018/doggodash)
 ### Please note
 - Please be patient when the page loads since I am using the free tier with Render.com. 
-- For some unknown reason, "Surprise me" may not load properly. If it is blank below the "Suprise me" button, try to refresh on your browser.
 
 ## SQL 
 
