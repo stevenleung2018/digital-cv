@@ -37,7 +37,7 @@ Mr. Shervin Manzuri Shalmani of Goldspot Discoveries Corp.
 - DoggoDash is an interactive web dashboard which provides visualizations for users to explore the breeds of dogs that best match their preferences.
 
 ![DoggoDash sample screenshot](img/sketch2.png) - [GitHub repo](https://github.com/stevenleung2018/doggodash)
-### Please note
+
 - Please be patient when the page loads since I am using the free tier with Render.com. 
 
 ## SQL 
