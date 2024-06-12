@@ -6,11 +6,11 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   10 months of experience as Wildlife Application Specialist at
+-   12 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
-    -   Currently PC-02
+    -   Substantively PC-02
     -   Qualified in a partially-assessed pool for EC-03 (Data
         Scientist/Data Engineer/Data Analyst) with Public Health Agency
         of Canada (PHAC)
