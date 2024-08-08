@@ -6,7 +6,7 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   12 months of experience as Wildlife Application Specialist at
+-   14 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
@@ -17,11 +17,13 @@
     -   Qualified in a fully-assessed pool for IT-02 (IT Analyst) with
         Shared Services Canada (SSC)
 -   Security: Reliability
--   10 years of experience as a technical consultant/project manager
+-   10+ years of experience as a technical consultant/project manager
     (with various companies)
 -   4.5+ years of data & analytics client-facing consultancy experience
 -   Master of Data Science, UBC
 -   Programming/Query Languages – Python, SQL, R
+-   Certified in Cybersecurity (CC) by ISC2 since December 2023
+-   Azure Fundamentals (AZ-900) since May 2023
 -   Project Management Professional (PMP) certified since 2017
 
 ## RELEVANT PROFESSIONAL EXPERIENCE
@@ -50,9 +52,8 @@
     projects, delivering solutions from pre-sales to delivery, resulting
     in enhanced client satisfaction.
 -   Managed P&L of Sales with a focus on HPC and AI/ML/Analytics
-    technologies, surpassing AI & Analytics targets by 209% in FY
-    2018-19 through strategic market segmentation and partnership
-    development.
+    technologies, surpassing AI & Analytics targets in FY 2018-19
+    through strategic market segmentation and partnership development.
 -   Crafted complex RFP responses in collaboration with the data science
     team and external partners, securing lucrative contracts.
 
