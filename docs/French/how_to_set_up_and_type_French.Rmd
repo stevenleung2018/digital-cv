@@ -21,7 +21,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   In addition to English, I would add French as a additional language. Since I am in Canada, I choose the region to be Canada. For the keyboard layout, I choose "US International". 
 
-
 ## Typing 
 
 ### Accented letters
@@ -60,49 +59,6 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Double quote (`"`)
 - You would need to type the `double quote` followed by `space` (two keystrokes).
 
-
-## Setup
-
--   In addition to English, I would add French as a additional language. Since I am in Canada, I choose the region to be Canada. For the keyboard layout, I choose "US International". 
-
-
-## Typing 
-
-### Accented letters
-
-#### Accent aigu (e.g. `é`, `É`)
-
--   You would press `single quote`, release, and type the letter underneath the accent aigu. For instance, if you want to type `é` (the small letter `e` with accent aigu), it would be `single quote`, relese, then type `e`. If it is `É`, it would be `single quote` and `E`. (If Caps Lock is not already on, it would be `shift+e`.) Again, there are two keystrokes for one letter.
-- Please see below if you need to type the single quote (which is the same character as the apostrophe).
-
-#### Accent grave (e.g. `à`, `è`)
--   You would type `backtick` where `backtick` stands for the key which is left to the number `1` on the keyboard which looks exactly like the accent grave itself, release, and then type the letter underneath the accent grave. For instance, if you want to type `à`, you would type `backtick`, release, then type `a`. 
-
-#### Accent circonflexe (e.g. `î`)
--   You would type `^` (or `shift+6`), release, and type the letter underneath the accent circonflexe. For instance, you would type `î` by `^`, release, then type `i`. 
-
-#### Cédille (i.e. `ç`)
--   `single quote`, release, then `c` (two keystrokes). 
-
-#### Tréma (i.e. `ï`, `ü`)
--   You would type `double quote` (or `shift+single quote`), release, and type the letter underneath the tréma. For instance, you would type `ï` by `double quote`, release, then type `i`.
-- Please see below if you need to type the double quote.
-
-#### Ligature (i.e. `œ`)
-- For `œ`, hold the `alt` key, then type `0156` (4 digits), then release `alt`.
-- For `Œ`, hold the `alt` key, then type `0140` (4 digits), then release `alt`.
-
-### Punctuations
-
-#### Guillemets (`«` and `»`, the double quotes that francophones use)
-- `«` is `ctrl+alt+[` (one keystroke) or `right alt+[` (one keystroke)
-- `»` is `ctrl+alt+]` (one keystroke) or `right alt+]` (one keystroke).
-
-#### Apostrophe (`'` as in `J'ai`) which is the same character as the single quote.
-- You would need to type the `single quote` followed by `space` (two keystrokes).
-
-#### Double quote (`"`)
-- You would need to type the `double quote` followed by `space` (two keystrokes).
 
 # macOS Sonoma (14.5)
 
