@@ -15,44 +15,12 @@ knitr::opts_chunk$set(echo = TRUE)
 -   It is based on the fact that I am primarily an anglophone learning French. In order words, I will minimize the learning required to be able to type French. There is no need to learn any new keyboard layout (like Azerty in France or CSA in Canada). The focus will be on how to type the "extra" French things that is not usually required when typing English.\
 -   I will cover both macOS, Windows, iPhone and iPad. This is applicable to computers sold to Canadian and US markets. I believe there are more markets using US English keyboards. If your keyboard layout is close to US English, it may be applicable to you too.
 
-# macOS Sonoma (14.5)
-
-## Setup
-
--   It is the simplest. You just need to make sure that you have an input method as "English" and the keyboard layout is "US English". The icon is a single capital letter "A". This may already have been the default setting on your Mac. \### Typing
-
-### Accented letters
-
-#### Accent aigu (e.g. `é`, `É`)
-
--   You would press `option+e`, release, and type the letter underneath the accent aigu. For instance, if you want to type `é` (the small letter `e` with accent aigu), it would be `option+e`, relese, then type `e`. If it is `É`, it would be `option+e` and `E`. (If Caps Lock is not already on, it would be `shift+e`.) Again, there are two key strokes for one letter. 
-
-#### Accent grave (e.g. `à`, `è`)
--   You would type `option+backtick` where `backtick` stands for the key which is left to the number `1` on the keyboard which looks exactly like the accent grave itself, release, and then type the letter underneath the accent grave. For instance, if you want to type `à`, you would type `option+backtick`, release, then type `a`. 
-
-#### Accent circonflexe (e.g. `î`)
--   You would type `option+i`, release, and type the letter underneath the accent circonflexe. For instance, you would type `î` by `option+i`, release, then type `i`. 
-
-#### Cédille (i.e. `ç`)
--   `option+c` (one keystroke). 
-
-#### Tréma (i.e. `ï`, `ü`)
--   You would type `option+u`, release, and type the letter underneath the tréma. For instance, you would type `ï` by `option+u`, release, then type `i`. 
-
-#### Ligature (i.e. `œ`)
-- `option+q` (one keystroke)
-
-### Punctuations
-
-#### Guillemets (`«` and `»`, the double quotes that francophones use)
-- `«` is `option+\` (one keystroke).
-- `»` is `shift+option+\` (one keystroke).
-
 # Windows 11
 
 ## Setup
 
 -   In addition to English, I would add French as a additional language. Since I am in Canada, I choose the region to be Canada. For the keyboard layout, I choose "US International". 
+
 
 ## Typing 
 
@@ -83,8 +51,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Punctuations
 
 #### Guillemets (`«` and `»`, the double quotes that francophones use)
-- `«` is `ctrl+alt+[` (one keystroke).
-- `»` is `ctrl+alt+]` (one keystroke).
+- `«` is `ctrl+alt+[` (one keystroke) or `right alt+[` (one keystroke)
+- `»` is `ctrl+alt+]` (one keystroke) or `right alt+]` (one keystroke).
 
 #### Apostrophe (`'` as in `J'ai`) which is the same character as the single quote.
 - You would need to type the `single quote` followed by `space` (two keystrokes).
@@ -92,12 +60,51 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Double quote (`"`)
 - You would need to type the `double quote` followed by `space` (two keystrokes).
 
+# macOS Sonoma (14.5)
+
+## Setup
+
+-   It is the simplest. You just need to make sure that you have an input method as "English" and the keyboard layout is "US English". The icon is a single capital letter "A". This may already have been the default setting on your Mac. 
+
+
+### Typing
+
+### Accented letters
+
+#### Accent aigu (e.g. `é`, `É`)
+
+-   You would press `option+e`, release, and type the letter underneath the accent aigu. For instance, if you want to type `é` (the small letter `e` with accent aigu), it would be `option+e`, relese, then type `e`. If it is `É`, it would be `option+e` and `E`. (If Caps Lock is not already on, it would be `shift+e`.) Again, there are two key strokes for one letter. 
+
+#### Accent grave (e.g. `à`, `è`)
+-   You would type `option+backtick` where `backtick` stands for the key which is left to the number `1` on the keyboard which looks exactly like the accent grave itself, release, and then type the letter underneath the accent grave. For instance, if you want to type `à`, you would type `option+backtick`, release, then type `a`. 
+
+#### Accent circonflexe (e.g. `î`)
+-   You would type `option+i`, release, and type the letter underneath the accent circonflexe. For instance, you would type `î` by `option+i`, release, then type `i`. 
+
+#### Cédille (i.e. `ç`)
+-   `option+c` (one keystroke). 
+
+#### Tréma (i.e. `ï`, `ü`)
+-   You would type `option+u`, release, and type the letter underneath the tréma. For instance, you would type `ï` by `option+u`, release, then type `i`. 
+
+#### Ligature (i.e. `œ`)
+- `option+q` (one keystroke)
+
+### Punctuations
+
+#### Guillemets (`«` and `»`, the double quotes that francophones use)
+- `«` is `option+\` (one keystroke).
+- `»` is `shift+option+\` (one keystroke).
+
+
+
 ## iPhone (iOS 17) and iPad (iPadOS 17)
 
 ### Setup
 - Settings -> General -> Keyboard -> Keyboards -> Add New Keyboard
 - Type `French` and choose the variation of French you want (e.g. French (France), French (Canada)).  (Choosing a different variation here does not affect how you type.  It will affect the spell checking and autocomplete functionalities.)
 - Choose one of those with `QWERTY`.
+
 
 ### Typing
 - If you are lazy enough, you can try to type without worrying about the accented letters, and let auto-correction and spell checking do the work for you.  Roughly this works like 80% of the time.  For the rest, you would need to go back to the word to change the letters into the properly accented ones.  
