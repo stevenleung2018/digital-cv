@@ -6,7 +6,7 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   14 months of experience as Wildlife Application Specialist at
+-   16 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
@@ -17,8 +17,9 @@
     -   Qualified in a fully-assessed pool for IT-02 (IT Analyst) with
         Shared Services Canada (SSC)
 -   Security: Reliability
--   10+ years of experience as a technical consultant/project manager
-    (with various companies)
+-   16 months of experience in data transformation/analysis and machine
+    learning in Python and SQL
+-   10+ years of experience as project management/technical consultancy
 -   4.5+ years of data & analytics client-facing consultancy experience
 -   Master of Data Science, UBC
 -   Programming/Query Languages – Python, SQL, R
