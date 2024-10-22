@@ -22,9 +22,6 @@
 -   10+ years of experience as project management/technical consultancy
 -   4.5+ years of data & analytics client-facing consultancy experience
 -   Master of Data Science, UBC
--   Programming/Query Languages – Python, SQL, R
--   Certified in Cybersecurity (CC) by ISC2 since December 2023
--   Azure Fundamentals (AZ-900) since May 2023
 -   Project Management Professional (PMP) certified since 2017
 
 ## RELEVANT PROFESSIONAL EXPERIENCE
@@ -34,18 +31,15 @@
 -   Spearhead the development of key materials, enhancing the
     application modernization strategy as requested by management and
     mandated by the Project Management Framework.
--   Streamline data migration processes by crafting robust data
-    extraction and transformation scripts, facilitating application
-    consolidation efforts.
+-   Deliver on-time release for the NRT project by providing Python and
+    SQL coding support, optimizing testing of PDF reports and data
+    pipeline development.
 -   Ensure timely releases (100% success rate) for the SAR-DMTS by
     leading UATs, collaborating with SMEs across departments, and
     resolving critical issues through bug fixes or workarounds,
     contributing to the administration of the SARA ([Species at risk
     public
-    registry](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry.html)).  
--   Delivered on-time release for the NRT project in Dec 2023 by
-    providing Python and SQL coding support, optimizing testing of PDF
-    reports and data pipeline development.
+    registry](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry.html)).
 
 ### Project Consultant of A.I. / Head of Sales, ClusterTech Limited, 2016 – 2021
 
@@ -117,7 +111,7 @@
 -   B.Sc. in Computer Science and Engineering, University of California,
     Los Angeles
 
-## [PROJECTS AT UBC](stevenleung2018.github.io)
+## [DATA SCIENCE PROJECTS](stevenleung2018.github.io)
 
 -   Capstone Project (May-Jun 2022): “Detection and Mitigation of Data
     Drift and Model Decay” for Goldspot Discoveries Corp.
