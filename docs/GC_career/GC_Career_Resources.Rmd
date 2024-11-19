@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Personnel security screening
 
+[Reliability status request process](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/pdcf-rsrp-eng.html#s1)
+
 [Out-of-country verifications](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/vhp-ocv-eng.html)
 
 ## Informal channels
