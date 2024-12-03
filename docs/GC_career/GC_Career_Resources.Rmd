@@ -1,5 +1,5 @@
 ---
-title: "GC Career Resources"
+title: "GC Career Resources (Beta)"
 author: "Steven Leung"
 date: "`r Sys.Date()`"
 output: html_document
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Basic Knowledge
 
-[Public Service Hiring: 101](https://wiki.gccollab.ca/images/f/f9/Public_Service_Hiring_101.pdf)
+- [Public Service Hiring: 101](https://wiki.gccollab.ca/images/f/f9/Public_Service_Hiring_101.pdf)
 
 ## Formal channels
 
@@ -22,22 +22,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Assessment resources
 
-[Video interviewing - applicant support](https://vidcruiter.com/video-interviewing/applicant-support/)
+- [Video interviewing - applicant support](https://vidcruiter.com/video-interviewing/applicant-support/)
 
 ### Personnel security screening
 
-[Reliability status request process](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/pdcf-rsrp-eng.html#s1)
-
-[Standard on Security Screening](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=28115)
-
-[Out-of-country verifications](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/vhp-ocv-eng.html)
+- [Reliability status request process](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/pdcf-rsrp-eng.html#s1)
+- [Standard on Security Screening](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=28115)
+- [Out-of-country verifications](https://www.tpsgc-pwgsc.gc.ca/esc-src/personnel/vhp-ocv-eng.html)
 
 ## Informal channels
 
 ### Facebook groups
 
-[Federal Youth Network/List of GC Facebook Groups - Liste des groupes Facebook du GC](https://wiki.gccollab.ca/Federal_Youth_Network/List_of_GC_Facebook_Groups_-_Liste_des_groupes_Facebook_du_GC)
+- [Federal Youth Network/List of GC Facebook Groups - Liste des groupes Facebook du GC](https://wiki.gccollab.ca/Federal_Youth_Network/List_of_GC_Facebook_Groups_-_Liste_des_groupes_Facebook_du_GC)
 
 ### Personal example
 
-[Steven's own post on FB in the "GC Policy - Informal/Unofficial group" in Dec 2022](https://www.facebook.com/groups/568251393590657/user/593330204)
+- [Steven's own post on FB in the "GC Policy - Informal/Unofficial group" in Dec 2022](https://www.facebook.com/groups/568251393590657/user/593330204)
