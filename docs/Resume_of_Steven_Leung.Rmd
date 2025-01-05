@@ -81,7 +81,7 @@ time_lapsed_str <- paste0(round(time_lapsed, 0), " months")
 
 ## RELEVANT EDUCATION
 - Master of Data Science, University of British Columbia	September 2021 – June 2022
-  - CGPA = 93.3% (A+ equivalent)
+  - GPA = 93.3% (A+ equivalent)
   - Relevant courses: Algorithms & Data Structures, Databases, Spatial & Time Series Analysis, Data Visualization, Automated Workflows, Machine Learning, NLP, Ethics (including EDI principles & bias prevention), Cloud Computing, Capstone Project
 - B.Sc. in Computer Science and Engineering, University of California, Los Angeles
 
