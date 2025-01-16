@@ -6,7 +6,7 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   16 months of experience as Wildlife Application Specialist at
+-   19 months of experience as Wildlife Application Specialist at
     Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
@@ -17,7 +17,7 @@
     -   Qualified in a fully-assessed pool for IT-02 (IT Analyst) with
         Shared Services Canada (SSC)
 -   Security: Reliability
--   16 months of experience in data transformation/analysis and machine
+-   19 months of experience in data transformation/analysis and machine
     learning in Python and SQL
 -   10+ years of experience as project management/technical consultancy
 -   4.5+ years of data & analytics client-facing consultancy experience
@@ -103,7 +103,7 @@
 
 -   Master of Data Science, University of British Columbia September
     2021 – June 2022
-    -   CGPA = 93.3% (A+ equivalent)
+    -   GPA = 93.3% (A+ equivalent)
     -   Relevant courses: Algorithms & Data Structures, Databases,
         Spatial & Time Series Analysis, Data Visualization, Automated
         Workflows, Machine Learning, NLP, Ethics (including EDI
