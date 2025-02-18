@@ -3,12 +3,19 @@ format:
   pdf:
     documentclass: article
     classoption: letterpaper
-    fontsize: 10pt
+    fontsize: 9pt
     header-includes:
       - \usepackage{fontspec}
       - \setmainfont{Arial}
       - \usepackage{geometry}
-      - \geometry{top=0.5in, bottom=0.5in, left=0.5in, right=0.5in}
+      - \geometry{top=0.4in, bottom=0.4in, left=0.4in, right=0.4in}
+      - \usepackage{setspace}
+      - \setstretch{0.8}
+      - \usepackage{fancyhdr}
+      - \pagestyle{fancy}
+      - \fancyfoot{}
+      - \renewcommand{\headrulewidth}{0pt}
+      - \renewcommand{\footrulewidth}{0pt}
   md: default
   html: default
 
@@ -20,12 +27,17 @@ comment: |
 library(lubridate)
 start_date <- ymd("2023-06-19")
 end_date <- today()
-time_lapsed <- interval(start_date, end_date) / months(1)
-time_lapsed_str <- paste0(round(time_lapsed, 0), " months")
+time_diff <- interval(start_date, end_date)
+years <- as.period(time_diff)@year
+months <- as.period(time_diff)@month
+time_lapsed_str <- ifelse(years > 0 & months > 0,
+                          paste0(years, " year", ifelse(years != 1, "s", ""), " and ", months, " month", ifelse(months != 1, "s", "")),
+                          ifelse(years > 0,
+                                 paste0(years, " year", ifelse(years != 1, "s", "")),
+                                 paste0(months, " month", ifelse(months != 1, "s", ""))))
 ```
 
 # STEVEN LEUNG, Master of Data Science, PMP
-
 -   [steven.leung\@alumni.ucla.edu](mailto:steven.leung@alumni.ucla.edu), Mobile: 604-499-3173, [LinkedIn](https://www.linkedin.com/in/stevenleung08), [GitHub](https://stevenleung2018.github.io)
 
 ## HIGHLIGHTS OF PROFILE

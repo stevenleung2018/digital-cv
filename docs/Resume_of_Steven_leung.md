@@ -1,13 +1,5 @@
 
 
-\usepackage{fontspec}
-
-\setmainfont{Arial}
-
-\usepackage{geometry}
-
-\geometry{top=0.5in, bottom=0.5in, left=0.5in, right=0.5in}
-
 # STEVEN LEUNG, Master of Data Science, PMP
 
 -   <steven.leung@alumni.ucla.edu>, Mobile: 604-499-3173,
@@ -16,8 +8,8 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   20 months of experience as Wildlife Application Specialist at
-    Canadian Wildlife Service (CWS), Environment and Climate Change
+-   1 year and 7 months of experience as Wildlife Application Specialist
+    at Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
     -   Substantively PC-02
@@ -27,8 +19,8 @@
     -   Qualified in a fully-assessed pool for IT-02 (IT Analyst) with
         Shared Services Canada (SSC)
 -   Security: Reliability
--   20 months of experience in data transformation/analysis and machine
-    learning in Python and SQL
+-   1 year and 7 months of experience in data transformation/analysis
+    and machine learning in Python and SQL
 -   4.5+ years of data & analytics client-facing consultancy experience
 -   10+ years of experience as project management/technical consultancy
 -   Master of Data Science, UBC
