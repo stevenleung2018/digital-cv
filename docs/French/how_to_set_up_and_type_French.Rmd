@@ -12,14 +12,16 @@ knitr::opts_chunk$set(echo = TRUE)
 # Summary
 
 -   In this file, I explain how to type French letters and punctuation on computers which are equipped with US English keyboards.
+
 -   It is based on the fact that I am primarily an anglophone learning French. In order words, I will minimize the learning required to be able to type French. There is no need to learn any new keyboard layout (like `AZERTY` in France or `CSA` in Canada). The focus will be on how to type the "extra" French things that are not usually required when typing English.
+
 -   I will cover both macOS, Windows, iPhone and iPad. This is applicable to computers sold to Canadian and US markets. I believe there are more markets using US English keyboards. If your keyboard layout is close to US English, it may be applicable to you too.
 
 # Windows 11
 
 ## Setup
 
--   In addition to English, I would add French as a additional language. Since I am in Canada, I choose the region to be `Canada`. For the keyboard layout, I choose `US International`. 
+-   In addition to English, I would add French as an additional language. Since I am in Canada, I choose the region to be `Canada`. For the keyboard layout, I choose `US International`. 
 
 ## Typing 
 
