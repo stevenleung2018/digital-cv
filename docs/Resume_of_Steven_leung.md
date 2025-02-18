@@ -88,8 +88,7 @@
 -   Machine learning: classification, regression, linear models,
     decision tree, random forest, SVM, k-NN, clustering, natural
     language processing, ensemble methods, deep learning with neural
-    networks (e.g. CNNs, Autoencoders, GANs), spatial and temporal
-    models (e.g. RNNs, LSTMs, transformers (GPT))
+    networks (e.g. transformers (GPT), CNNs, Autoencoders, GANs)
 -   Statistics & Probability: hypothesis testing, statistical inference,
     bootstrapping, simulations, experiment design (e.g. A/B testing)
 

@@ -20,7 +20,9 @@ format:
   html: default
 
 comment: |
-  This file is my data-driven resume.  It can be used for generating HTML, PDF and Word versions of the resume.
+  This file is my data-driven resume.  It can be used for generating PDF, Markdown and HTML versions of the resume.
+  To render all formats of all Quarto files (.qmd), the command is `quarto render *.qmd`.
+  To render only a certain format, say PDF, the command is `quarto render *.qmd --to pdf`.
 ---
 
 ```{r setup, include=FALSE}
@@ -86,7 +88,7 @@ time_lapsed_str <- ifelse(years > 0 & months > 0,
 -   Project Management tools: Azure DevOps, GitHub, Trello, Microsoft Project
 -   Data visualization: Altair, ggplot2, Dash, Plotly, Heroku, Shiny, Kepler.gl, MS Excel, Tableau, PowerBI
 -   Platforms/Tools: Azure DevOps, AWS (S3, EMR, EC2), FME (Safe Software), docker, git, GitHub Actions (e.g. CI/CD), GNU make, PostgreSQL, MongoDB, Spark, Heroku, conda, VS Code, Jupyter, RStudio
--   Machine learning: classification, regression, linear models, decision tree, random forest, SVM, k-NN, clustering, natural language processing, ensemble methods, deep learning with neural networks (e.g. CNNs, Autoencoders, GANs), spatial and temporal models (e.g. RNNs, LSTMs, transformers (GPT))
+-   Machine learning: classification, regression, linear models, decision tree, random forest, SVM, k-NN, clustering, natural language processing, ensemble methods, deep learning with neural networks (e.g. transformers (GPT), CNNs, Autoencoders, GANs)
 -   Statistics & Probability: hypothesis testing, statistical inference, bootstrapping, simulations, experiment design (e.g. A/B testing)
 
 ## PUBLIC PRESENTATIONS
