@@ -119,7 +119,12 @@ time_lapsed_str <- ifelse(years > 0 & months > 0,
 
 ## VOLUNTEERING
 
--   Mentor for MDS students, UBC, November 2023-April 2024
+-   Hackathon Mentor (2 cohorts), UBC Sauder School of Business, Feb 2024 and Feb 2025
+    -   Mentored a student team as they prepared for their hackathon, simulating a real-world business scenario.
+    - Acted as the team's simulated client, answering questions about business requirements and providing guidance.
+    - Attended and evaluated data visualization presentations (e.g., Tableau dashboards) from all teams.
+Provided constructive feedback on strengths and areas for improvement, simulating a real business setting.
+-   Mentor for MDS students (2 cohorts), UBC, November 2023-April 2025
     -   Guided and supported two MDS students, providing strategic advice and fostering professional development to prepare them for successful careers post-graduation in June 2024.
 -   Workshop on Project Management for MDS students, UBC, April 2024
     -   Delivered a workshop on project management best practices, sharing insights on effective project planning, execution, and monitoring to enhance students' understanding of project management principles.

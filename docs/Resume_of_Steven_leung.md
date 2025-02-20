@@ -8,7 +8,7 @@
 
 ## HIGHLIGHTS OF PROFILE
 
--   1 year and 7 months of experience as Wildlife Application Specialist
+-   1 year and 8 months of experience as Wildlife Application Specialist
     at Canadian Wildlife Service (CWS), Environment and Climate Change
     Canada (ECCC).
 -   Classification:
@@ -19,7 +19,7 @@
     -   Qualified in a fully-assessed pool for IT-02 (IT Analyst) with
         Shared Services Canada (SSC)
 -   Security: Reliability
--   1 year and 7 months of experience in data transformation/analysis
+-   1 year and 8 months of experience in data transformation/analysis
     and machine learning in Python and SQL
 -   4.5+ years of data & analytics client-facing consultancy experience
 -   10+ years of experience as project management/technical consultancy
@@ -148,7 +148,17 @@
 
 ## VOLUNTEERING
 
--   Mentor for MDS students, UBC, November 2023-April 2024
+-   Hackathon Mentor (2 cohorts), UBC Sauder School of Business, Feb
+    2024 and Feb 2025
+    -   Mentored a student team as they prepared for their hackathon,
+        simulating a real-world business scenario.
+    -   Acted as the team’s simulated client, answering questions about
+        business requirements and providing guidance.
+    -   Attended and evaluated data visualization presentations (e.g.,
+        Tableau dashboards) from all teams. Provided constructive
+        feedback on strengths and areas for improvement, simulating a
+        real business setting.
+-   Mentor for MDS students (2 cohorts), UBC, November 2023-April 2025
     -   Guided and supported two MDS students, providing strategic
         advice and fostering professional development to prepare them
         for successful careers post-graduation in June 2024.
