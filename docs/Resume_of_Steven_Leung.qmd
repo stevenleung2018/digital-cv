@@ -41,7 +41,7 @@ time_lapsed_str <- ifelse(years > 0 & months > 0,
 # STEVEN LEUNG, Master of Data Science, PMP
 -   [steven.leung\@alumni.ucla.edu](mailto:steven.leung@alumni.ucla.edu), Mobile: 604-499-3173, [LinkedIn](https://www.linkedin.com/in/stevenleung08), [GitHub](https://stevenleung2018.github.io)
 
-## HIGHLIGHTS OF PROFILE
+## PROFESSIONAL SUMMARY
 
 -   `r time_lapsed_str` of experience as Wildlife Application Specialist at Canadian Wildlife Service (CWS), Environment and Climate Change Canada (ECCC).
 -   Classification:
