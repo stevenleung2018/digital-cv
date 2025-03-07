@@ -6,7 +6,7 @@
     [LinkedIn](https://www.linkedin.com/in/stevenleung08),
     [GitHub](https://stevenleung2018.github.io)
 
-## HIGHLIGHTS OF PROFILE
+## PROFESSIONAL SUMMARY
 
 -   1 year and 8 months of experience as Wildlife Application Specialist
     at Canadian Wildlife Service (CWS), Environment and Climate Change
